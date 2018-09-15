@@ -1,0 +1,77 @@
+{
+  "name": "knowledge-base-ui",
+  "version": "1.0.0",
+  "description": "知识库前端项目",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/dalangzhonghangxing/knowledge-base-ui.git"
+  },
+  "author": "dalangzhonghangxing",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dalangzhonghangxing/knowledge-base-ui/issues"
+  },
+  "files": [
+    "WebContent"
+  ],
+  "homepage": "https://github.com/dalangzhonghangxing/knowledge-base-ui#readme",
+  "devDependencies": {
+    "bower": "^1.7.7",
+    "event-stream": "3.3.4 ",
+    "graceful-fs": "4.1.9",
+    "gulp": "3.9.1",
+    "gulp-angular-filesort": "^1.2.1",
+    "gulp-clean": "0.3.2",
+    "gulp-concat": "2.6.0",
+    "gulp-debug": "2.1.2",
+    "gulp-eol": "0.1.2",
+    "gulp-file": "0.3.0",
+    "gulp-filter": "4.0.0",
+    "gulp-if": "2.0.1",
+    "gulp-inject": "^4.1.0",
+    "gulp-install": "xiafan68/gulp-install#v0.6.1",
+    "gulp-main-bower-files": "1.5.3",
+    "gulp-uglify": "2.0.0",
+    "gulp-useref": "^3.1.5",
+    "jasmine-core": "^2.6.3",
+    "json-stringify-safe": "5.0.1",
+    "karma": "^0.13.22",
+    "karma-chrome-launcher": "^0.2.3",
+    "karma-firefox-launcher": "^0.1.7",
+    "karma-jasmine": "^0.3.8",
+    "karma-junit-reporter": "^0.4.2",
+    "karma-safari-launcher": "^1.0.0",
+    "lazystream": "1.0.0",
+    "live-server": "^1.0.0",
+    "map-stream": "0.0.6",
+    "path": "0.12.7",
+    "protractor": "^5.3.2",
+    "stream-series": "0.1.1",
+    "vinyl": "2.0.0",
+    "wiredep": "4.0.0",
+    "through2": "2.0.3"
+  },
+  "scripts": {
+    "clean": "gulp clean",
+    "deploy": "gulp deploy",
+    "watch-deploy": "gulp watch-deploy",
+    "dev": "gulp dev",
+    "watch-dev": "gulp watch-dev",
+    "prestart-dev": "npm run-script dev",
+    "start-dev": "live-server --host=localhost --port=63342 --no-browser --mount=/yjsy-ui:./build  --watch=./build",
+    "prestart": "npm run-script deploy",
+    "start": "live-server --host localhost --port=8081 --no-browser --mount=/webui:./dist",
+    "postinstall": "npm run-script bower-install",
+    "bower-install": "gulp bower-install",
+    "pretest": "npm install --registry https://registry.npm.taobao.org",
+    "test": "karma start karma.conf.js",
+    "preupdate-webdriver": "npm install --registry https://registry.npm.taobao.org",
+    "update-webdriver": "webdriver-manager update",
+    "webdriver:version": "sed -i.bak 's/\"chromedriver\": \"[0-9\\.]*\"/\"chromedriver\": \"2.30\"/' node_modules/protractor/node_modules/webdriver-manager/config.json && sed -i.bak 's/mac32/mac64/' node_modules/protractor/node_modules/webdriver-manager/bin/webdriver-manager",
+    "protractor": "protractor e2e-tests/protractor.conf.js"
+  },
+  "dependencies": {
+    "ueditor": "^1.2.3"
+  }
+}

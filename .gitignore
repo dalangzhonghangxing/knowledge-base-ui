@@ -1,0 +1,13 @@
+**/.DS_Store
+dist/**
+build/**
+.idea/
+.idea/*
+*~
+node_modules/*
+node_modules/**
+src/lib/js/node-modules/**
+src/lib/js/**
+*.iml
+src/lib/js/**
+npm-debug.log.*
