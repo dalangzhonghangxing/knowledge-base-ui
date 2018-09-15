@@ -1,4 +1,5 @@
 /**
+ * Created by xiafan on 16/8/27.
  * for the whole projects, we need to copy all non-js files into the target directory;<br>
  * for each app html file, we need to do the following steps automatically:
  * <ul>
@@ -37,19 +38,6 @@ var DEV_DIR = "./build";
 var DEPLOY_DIR = "./dist";
 var SRC_DIR = "./src";
 var isDeploy = false;
-/*
- * FIXME: there is a bug in gulp watch that cause it won't lanch corresponding tasks after the first modification
- * to watched files. we need to wait for gulp 4.0 where the bug will be fixed
- * */
-gulp.task("watch-deploy", function () {
-    //livereload.listen({port: 8081, basePath: 'dist'});
-    //gulp.watch("src/**/*", ["deploy"]);
-});
-
-gulp.task("watch-dev", function () {
-    //livereload.listen({port: 8081, basePath: 'build'});
-    //gulp.watch("src/**/*", ["dev"]);
-});
 
 gulp.task("clean", function () {
     return gulp.src(["build/*", "dist/*"]).pipe(clean());
@@ -216,8 +204,8 @@ function injectForDeploy() {
     //inject common libraries and store injected files into target directory
     var commonJS = gulp.src("./common/common.app.min.js", {read: false, cwd: dest, base: dest});
     apps = apps.pipe(debug({title:"ready for inject"}))
-               .pipe(inject(commonJS, {relative: true}))
-               .pipe(gulp.dest(dest));
+        .pipe(inject(commonJS, {relative: true}))
+        .pipe(gulp.dest(dest));
 
     return series(apps);
 }
