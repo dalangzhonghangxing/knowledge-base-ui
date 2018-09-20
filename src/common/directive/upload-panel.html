@@ -1,0 +1,10 @@
+<input name="file" data-ngf-select type="file" style="display: none" id="hiddenFile" ng-model="uploadCtrl.file"
+       ng-show="false" ngf-max-size="{{uploadCtrl.maxFileSize}}" ngf-change="uploadCtrl.invalidFile()"
+       accept="*/*">
+<button class="btn btn-primary" ng-click="uploadCtrl.chooseFile()" ng-bind="uploadCtrl.uploadBtnName"></button>
+<label ng-show="uploadCtrl.file!=null" ng-bind="uploadCtrl.file.name"></label>
+<button ng-show="uploadCtrl.file!=null" class="btn btn-success" ng-click="uploadCtrl.upload()">上传</button>
+<button ng-show="uploadCtrl.file!=null && uploadCtrl.showIscheck" class="btn btn-warning" ng-click="uploadCtrl.check()">核对</button>
+<button ng-show="uploadCtrl.file!=null" class="btn" ng-click="uploadCtrl.cancel()">取消</button>
+<span class="red" ng-show="uploadCtrl.invalid && uploadCtrl.file==null && !uploadCtrl.drop">文件不能超过20MB</span>
+<button class="btn btn-link" style="margin-left: 10px;" ng-click="uploadCtrl.downloadTemplate()">下载模板</button>

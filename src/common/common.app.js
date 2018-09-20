@@ -1,18 +1,20 @@
 /**
- * @author xiafan
+ * 公共方法配置文件
  */
 
 (function () {
     'use strict';
 
-    var utils = angular.module('ecnuUtils',
+    var utils = angular.module('Utils',
         [
             'ngCookies', 'ngStorage', 'ui.bootstrap', 'ngFileUpload', 'angular-timeline'
-            , 'ecnuConfig', 'ecnuBrowserCheck', 'LocalStorageModule', 'ngHopscotch'
+            , 'Config', 'BrowserCheck', 'LocalStorageModule', 'ngHopscotch'
         ]);
 
     utils.config(['$httpProvider', '$cookiesProvider', config]);
+
     function config($httpProvider, $cookiesProvider) {
+        $httpProvider.defaults.headers.common = {'Access-Control-Allow-Origin': "*"};
         $httpProvider.defaults.withCredentials = true;
         $cookiesProvider.defaults.path = '/';
     }
@@ -27,23 +29,19 @@
         '$http',
         '$route',
         'SessionByCookie',
-        'EcnuConnection',
-        'PageState',
+        'connection',
         'Prompt',
-        'loginUtil',
-        'systemExecutor',
         run
     ]);
-    function run($http, $route, SessionByCookie, EcnuConnection, PageState, Prompt, loginUtil, systemExecutor) {
+
+    function run($http, $route, SessionByCookie, connection, Prompt) {
         // 下面这行代码用于保证route模块总是能够捕捉到url变化的事件
         $route.reload();
 
-        $http.defaults.headers.common['Access-Control-Allow-Origin'] = "*";
         if (SessionByCookie.getItem('XSRF-TOKEN') != null)
             $http.defaults.headers.common['X-CSRF-TOKEN'] = SessionByCookie.getItem('XSRF-TOKEN');
 
-        EcnuConnection.errorHandler = function (err, status) {
-            // FIXME: 目前对于options和preflight请求被403的时候, err为null, status为-1。
+        connection.errorHandler = function (err, status) {
             // 但是不能确定是否能够通过这个组合就将用户重定向到登录页面
             var reason = "服务无法访问";
             if (status != -1 && err != null) {
@@ -54,34 +52,11 @@
             var instance = Prompt.promptErrorMessage(proMessage);
             instance.result.then(function (res) {
             }, function (res) {
-                if (status == 401 || status == 403) {
-                    PageState.clearSession(err.data.loginUrl);
-                }
-
-                if (status >= 400 && status < 500) {
-                    //PageState.clearSession(err.data.loginUrl);
-                }
+                // TODO: 用户点击确认之后，可添加事项
             });
             if (document.getElementById("mask") != null)
                 document.getElementById("mask").style.display = 'none';
         };
-
-        //自动进行cas登录，如果成功了设置系统的状态
-        loginUtil.casLogin(function (res) {
-            //根据res设置初始化角色
-            //不管成功与否,都要表示为系统初始化ok
-            //systemExecutor.setCondition(systemExecutor.LOGIN_COMPLETE, true);
-            if (res != null) {
-                //选择一个权限最高的角色访问当前页面
-                PageState.chooseSafestPageType(function () {
-                    systemExecutor.setCondition(systemExecutor.READY, true);
-                });
-            } else {
-                //验证当前角色是否有权限访问当前页面
-                PageState.verifyPageAccesibility();
-                systemExecutor.setCondition(systemExecutor.READY, true);
-            }
-        });
 
         // 对Date的扩展，将 Date 转化为指定格式的String
         // 月(M)、日(d)、小时(h)、分(m)、秒(s)、季度(q) 可以用 1-2 个占位符，

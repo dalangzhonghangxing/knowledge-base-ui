@@ -1,0 +1,54 @@
+<style>
+    .info-table td {
+        vertical-align: middle !important;
+    }
+</style>
+<div class="info-table">
+    <table class="table table-striped table-bordered table-hover fee-table-bordered">
+        <thead>
+        <tr>
+            <th class="text-center">
+                <input type="checkbox" data-ng-model="infoTableCtrl.allChecked"
+                       data-ng-change="infoTableCtrl.checkAll()"/>
+            </th>
+            <th class="text-center" style="min-width: 50px;">序号</th>
+            <th class="text-center" ng-repeat="title in infoTableCtrl.titles">{{title}}</th>
+            <th class="text-center" ng-show="infoTableCtrl.btnNames != null && infoTableCtrl.btnNames.length>0">操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="value in infoTableCtrl.values">
+            <td class="text-center">
+                <input type="checkbox" data-ng-model="value.$checked"/>
+            </td>
+            <td class="text-center" ng-bind="$index + 1+(infoTableCtrl.currentPage-1)*infoTableCtrl.numPerPage">
+            </td>
+            <td class="text-center" ng-repeat="field in infoTableCtrl.fields"
+                ng-bind="infoTableCtrl.valueHandler(value[field],$index)"></td>
+            <td class="text-center" ng-show="infoTableCtrl.btnNames != null && infoTableCtrl.btnNames.length>0">
+                <button style="margin-right: 5px;" ng-repeat="name in infoTableCtrl.btnNames"
+                        class="{{infoTableCtrl.btnClass[$index]}}"
+                        ng-disable="infoTableCtrl.btnDisableFunc(value,$index)"
+                        ng-show="infoTableCtrl.btnShowFunc(value,$index)"
+                        ng-click="infoTableCtrl.callback($index,value)">{{name}}
+                </button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <div class="form-inline forPagination">
+        <div class="col-md-3"></div>
+        <div class="text-center col-md-6">
+            <uib-pagination total-items="infoTableCtrl.totalItems" ng-model="infoTableCtrl.currentPage"
+                            items-per-page="infoTableCtrl.numPerPage" max-size="infoTableCtrl.maxSize"
+                            class="pagination pagination-location" first-text="首页" previous-text="上一页"
+                            next-text="下一页"
+                            last-text="末页" boundary-links="true" ng-change="infoTableCtrl.pageChange()"
+                            force-ellipses="true"></uib-pagination>
+        </div>
+        <!--TODO: 调整总记录样式-->
+        <div class="text-left col-md-3" style="margin-top: 25px;">
+            <label class="pagination-label">总共{{infoTableCtrl.totalItems}}条记录</label>
+        </div>
+    </div>
+</div>

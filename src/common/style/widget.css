@@ -1,0 +1,598 @@
+@CHARSET "UTF-8";
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak, .ng-hide {
+  display: none !important;
+}
+
+.hline {
+  margin: 0px auto;
+}
+
+/*加载动画样式样式 ,背景虚化的样式*/
+.overlay {
+  background-color: #e9e9e9;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 0.7;
+  height: 100vh;
+}
+
+.no-padding {
+  padding: 0px !important;
+}
+
+.no-padding-left {
+  padding-left: 0px !important;
+}
+
+.no-padding-right {
+  padding-right: 0px !important;
+}
+
+/*搜索界面样式*/
+.search-form {
+  width: 100%;
+  float: left;
+  margin-bottom: 10px;
+  border-color: #D9D9D9;
+  border-width: 1px;
+  border-style: solid solid solid solid;
+  border-radius: 4px;
+}
+
+.search-form .search-section {
+  margin-top: 0;
+  margin-bottom: -10px;
+  padding: 5px 0px 0px 0px;
+  width: 100%;
+  float: left;
+}
+
+.search-form .search-bottom {
+  width: 100%;
+  padding: 10px 10px 10px 10px;
+  float: left;
+}
+
+.search-form .search-section label {
+  margin-top: 5px;
+  text-align: right;
+  vertical-align: middle !important;
+}
+
+.search-body {
+  width: 100%;
+  float: left;
+  border-color: #D9D9D9;
+  border-width: 1px;
+  border-style: solid solid none solid;
+  border-radius: 4px;
+}
+
+.search-body .search-section {
+  margin-top: 0;
+  margin-bottom: -10px;
+  padding: 5px 0px 0px 0px;
+  width: 100%;
+  float: left;
+}
+
+.search-body .search-bottom {
+  width: 100%;
+  padding: 10px 10px 10px 10px;
+  float: left;
+}
+
+.search-body .search-section label {
+  margin-top: 5px;
+  text-align: right;
+  vertical-align: middle !important;
+}
+
+.search-section .form-group {
+  margin-bottom: 15px !important;
+}
+
+.hline {
+  width: 100%;
+  height: 1px;
+  border-color: #D9D9D9;
+  border-width: 1px;
+  border-bottom-style: solid;
+  float: left;
+}
+
+.date-range-control {
+  width: 13.33%;
+  float: left;
+}
+
+/*说明panel的样式*/
+.memo .panel {
+  border: 1px solid transparent;
+}
+
+.memo .panel-border-color {
+  border-color: #dbdbdb;
+}
+
+.memo .panel-info > .panel-heading {
+  color: #333;
+  background-color: #eee;
+  border-color: #eee;
+  padding-left: 20px;
+}
+
+.memo .panel-body {
+  padding-left: 15px;
+}
+
+.memo .panel-body ul {
+  list-style-type: disc;
+}
+
+.memo .panel-body ul li {
+  list-style-type: disc;
+}
+
+/*首页功能panel的样式*/
+.app-panel {
+  margin-bottom: 20px;
+  background-color: #fff;
+  border: 0;
+  border-radius: 4px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+}
+
+.app-panel .panel-title {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 20px;
+  color: #f5f5f5;
+  background-color: #3A5898;
+}
+
+.app-panel .panel-body {
+  padding: 0;
+}
+
+.app-panel .panel-default {
+  border-color: #5c84ad;
+}
+
+.app-panel .panel-default > .panel-heading {
+  color: #333;
+  background-color: #3A5898;
+  border-color: #3A5898;
+}
+
+.app-panel li {
+  list-style-type: none;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.app-panel li > a {
+  font-family: 微软雅黑;
+  font-size: 16px;
+  color: #333;
+}
+
+.app-panel .panel-default > .panel-heading + .panel-collapse > .panel-body {
+  border: 1px solid #5c84ad;
+}
+
+/*学生学籍卡的样式*/
+.xs-info-panel {
+  width: 100%;
+  height: 677px;
+  overflow-y: scroll;
+}
+
+.vBorder {
+  margin: 0 2%;
+}
+
+.addr_line {
+  font-size: 16px;
+  font-weight: bold;
+  border-bottom-width: 2px;
+  border-bottom: 2px solid #518ACF;
+}
+
+/*学籍卡悬浮导航栏的样式*/
+.xs-info-panel li {
+  color: #555;
+  font-weight: 700;
+  align-content: center;
+  cursor: pointer;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+/*登录后选择权限角色的样式*/
+.panel-heading-position {
+  text-align: center;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.privilege-manage .btn-lg {
+  font-size: 14px;
+  line-height: 1;
+}
+
+.privilege-manage .table-bordered > thead {
+  background-color: #f5f5f5;
+}
+
+.privilege-manage .table-bordered > thead > tr > th {
+  vertical-align: middle;
+  text-align: center;
+}
+
+.privilege-manage .table-bordered > tbody > tr > td {
+  vertical-align: middle;
+  text-align: center;
+}
+
+.privilege-manage .table-bordered > tbody > tr > td > label {
+  margin-bottom: 0px;
+  font-weight: normal;
+}
+
+.privilege-manage-top {
+  padding-top: 47px;
+}
+
+/*华东师范大学微信公众号样式*/
+.page-wechat-back {
+  vertical-align: middle;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  width: 100%;
+  height: 100%;
+  opacity: 0.8;
+  background-color: #0d1217;
+  z-index: 100;
+}
+
+.page-wechat {
+  opacity: 1;
+  position: absolute;
+  left: 42%;
+  top: 25%;
+  z-index: 101;
+}
+
+/*以下为导航栏中搜索框和用户下来菜单的样式定义*/
+
+/*树形控件自定义样式*/
+treecontrol {
+  /* prevent user selection */
+  -moz-user-select: -moz-none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+  /* default */
+  font-family: Verdana, Helvetica, Arial, sans-serif;
+  font-size: 18px;
+  color: #555;
+  text-decoration: none;
+}
+
+treecontrol.tree-light li.tree-expanded i.tree-branch-head {
+  padding: 1px 10px;
+  background: url("../../common/image/tree/node-opened-2.png") no-repeat;
+}
+
+treecontrol.tree-light li.tree-collapsed i.tree-branch-head {
+  padding: 1px 10px;
+  background: url("../../common/image/tree/node-closed-2.png") no-repeat;
+}
+
+.tree-branch-head {
+  margin-top: 7px;
+}
+
+.echarts {
+  padding: 0px;
+  height: 600px;
+  /*     border: dashed 1px darkblue; */
+}
+
+@media (min-width: 992px) {
+  .modal-lg {
+    width: 992px;
+  }
+}
+
+/**dropbox**/
+.drop-box {
+  background: #F8F8F8;
+  border: 5px dashed #DDD;
+  width: 100%;
+  text-align: center;
+  padding: 10px 10px;
+  text-align: center;
+}
+
+/**horizental line*/
+.hline {
+  width: 100%;
+  height: 2px;
+  margin: 2px auto;
+  padding: 0px;
+  /*background-color: #D5D5D5;*/
+  overflow: hidden;
+}
+
+.tab-pane > p:last-child {
+  margin-bottom: 0px;
+}
+
+/* Reverse aligned tabs */
+.tabs-reversed > li {
+  float: right;
+  margin-right: 0;
+}
+
+.tabs-reversed > li > a {
+  margin-right: 0;
+}
+
+/**----------------social icon的定义-------------------**/
+.social-icons {
+  padding: 0;
+  margin: 0;
+}
+
+.social-icons:before, .social-icons:after {
+  content: " ";
+  display: table;
+}
+
+.social-icons:after {
+  clear: both;
+}
+
+.social-icons li {
+  float: left;
+  display: inline;
+  list-style: none;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  text-indent: -9999px;
+}
+
+.social-icons li > a {
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
+  border-radius: 2px;
+  width: 28px;
+  height: 28px;
+  display: block;
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+}
+
+.social-icons li:hover > a {
+  background-position: 0 -38px;
+}
+
+.social-icons li .rss {
+  background: url(../image/social/rss.png) no-repeat;
+}
+
+.social-icons li .weibo {
+  background: url(../image/social/weibo.png) no-repeat;
+}
+
+.social-icons li .wechat {
+  background: url(../image/social/wechat.png) no-repeat;
+}
+
+.social-icons.social-icons-color > li > a {
+  opacity: 0.7;
+  background-position: 0 -38px !important;
+}
+
+.social-icons.social-icons-color > li > a:hover {
+  opacity: 1;
+}
+
+.social-icons.social-icons-circle > li > a {
+  border-radius: 25px !important;
+}
+
+/***
+Inline Social Icons
+***/
+.social-icon {
+  display: inline-block !important;
+  width: 28px;
+  height: 28px;
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
+  border-radius: 2px;
+  transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+}
+
+.social-icon.social-icon-circle {
+  border-radius: 25px !important;
+}
+
+.social-icon.rss {
+  background: url(../image/social/rss.png) no-repeat;
+}
+
+.social-icon.weibo {
+  background: url(../image/social/weibo.png) no-repeat;
+}
+
+.social-icon.wechat {
+  background: url(../image/social/wechat.png) no-repeat;
+}
+
+.social-icon:hover {
+  background-position: 0 -38px;
+}
+
+.social-icon-color {
+  opacity: 0.7;
+  background-position: 0 -38px !important;
+}
+
+.social-icon-color:hover {
+  opacity: 1;
+}
+
+/**----------------异动审核里的按钮样式，暂时放在这里-------------------**/
+.panel-heading {
+  text-align: center;
+}
+
+.panel-body {
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.panel-primary > .panel-heading {
+  color: #D8E3F2;
+  background-color: #3A5898;
+  border-color: #3A5898;
+}
+
+.panel-primary {
+  border-color: #3A5898;
+}
+
+/**
+.modal-body {
+  padding-bottom: 0px;
+}
+*/
+
+.modal-body label {
+  text-align: right;
+}
+
+.modal-title {
+  text-align: center;
+}
+
+.modal-body label {
+  text-align: right;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.no-border-btn {
+  color: #2b669a;
+  border: 0px;
+  background: transparent;
+}
+
+.glyphicon {
+  font-size: 12px;
+}
+
+.position-relative {
+  position: relative;
+}
+
+.warning-status {
+  margin-right: 20px;
+  color: red;
+  font-weight: 100;
+}
+
+.success-status {
+  margin-right: 20px;
+  color: green;
+}
+
+.no-margin-bottom {
+  margin-bottom: 0px !important;
+}
+
+.red {
+  color: red;
+}
+
+.container-fluid {
+  padding-right: 0px;
+  padding-left: 0px;
+}
+
+.main {
+  margin-top: -20px;
+  min-height: 600px;
+}
+
+.main-left {
+  height: 600px;
+  border-right: #cdd3d8 1px solid;
+}
+
+.main-right{
+  padding-top: 20px;
+  height: 600px;
+  overflow-y: auto;
+}
+
+.navbar-brand {
+  margin-left: 15px !important;
+}
+
+.left-nav ul li {
+  list-style-type: none;
+}
+
+.left-nav {
+  padding-top: 20px;
+}
+
+
+.main-foot {
+  clear: both;
+}
+
+.navbar-nav{
+  margin-left: 59px !important;
+}
+
+.breadcrumb {
+  background-color:#ffffff;
+}
+
+.navbar-header{
+  padding-top: 10px;
+}
+
+.navbar-nav {
+  padding-top: 10px;
+}
