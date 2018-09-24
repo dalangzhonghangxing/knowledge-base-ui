@@ -20,7 +20,6 @@
 
     function FooterCtrl(PathUtils) {
         var vm = this;
-        vm.url = PathUtils.qualifiedPath("/common/image/social/qrcode.png");
     }
 
 })();

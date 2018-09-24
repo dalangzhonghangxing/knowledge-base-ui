@@ -23,7 +23,7 @@
     function TopNavPanelCtrl(PathUtils) {
         var vm = this;
         vm.menus = [
-            {"name": "准备",type:"prepare", "href": PathUtils.qualifiedPath("/prepare/index.html#/sentence.html")},
+            {"name": "准备",type:"prepare", "href": PathUtils.qualifiedPath("/prepare/index.html#/sentence")},
             {"name": "训练",type:"train", "href": PathUtils.qualifiedPath("/train/index.html#/")},
             {"name": "预测",type:"predict", "href": PathUtils.qualifiedPath("/predict/index.html#/")},
             {"name": "展示",type:"show", "href": PathUtils.qualifiedPath("/show/index.html#/")}

@@ -1,7 +1,13 @@
 <div class="left-nav">
+    <div class="left-nav-top">
+        <div>{{leftNavPanelCtrl.parent}}</div>
+    </div>
     <ul>
-        <li ng-repeat="menu in leftNavPanelCtrl.menus">
-            <a href="{{menu.href}}">{{menu.name}}</a>
+        <li ng-repeat="menu in leftNavPanelCtrl.menus"
+            ng-class="menu.type == leftNavPanelCtrl.currentType?'left-nav-item-active':'left-nav-item'">
+            <a href="{{menu.href}}"
+               ng-click="leftNavPanelCtrl.currentType = menu.type">{{menu.name}}
+            </a>
         </li>
     </ul>
 </div>

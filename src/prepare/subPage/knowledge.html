@@ -1,0 +1,18 @@
+<div ng-controller="KnowledgeCtrl as knowledgeCtrl">
+    <!--<ol class="breadcrumb">-->
+    <!--<li><a href="/prepare/index.html">主页</a></li>-->
+    <!--<li><a href="/prepare/index.html">构建数据集</a></li>-->
+    <!--<li class="active">句子</li>-->
+    <!--</ol>-->
+    <upload-panel upload-btn-name="'上传知识点'" template="'/download/knowledge.csv'" file="knowledgeCtrl.file"
+                  upload-function="knowledgeCtrl.upload()"></upload-panel>
+
+    <div style="margin-top: 20px;">
+        <info-table titles="knowledgeCtrl.titles" fields="knowledgeCtrl.fields" values="knowledgeCtrl.values"
+                    total-items="knowledgeCtrl.totalItems" current-page="currentPage"
+                    num-per-page="knowledgeCtrl.numPerPage" search="knowledgeCtrl.search()"
+                    btn-funcs="knowledgeCtrl.btnFuncs" btn-names="knowledgeCtrl.btnNames"
+                    btn-class="knowledgeCtrl.btnClass"
+        ></info-table>
+    </div>
+</div>

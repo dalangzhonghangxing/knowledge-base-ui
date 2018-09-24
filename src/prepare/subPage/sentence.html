@@ -4,12 +4,13 @@
     <!--<li><a href="/prepare/index.html">构建数据集</a></li>-->
     <!--<li class="active">句子</li>-->
     <!--</ol>-->
+    <button class="btn btn-primary" ng-click="sentenceCtrl.split()">分词</button>
     <upload-panel upload-btn-name="'上传句子'" template="'/download/sentence.csv'" file="sentenceCtrl.file"
                   upload-function="sentenceCtrl.upload()"></upload-panel>
 
     <div style="margin-top: 20px;">
         <info-table titles="sentenceCtrl.titles" fields="sentenceCtrl.fields" values="sentenceCtrl.values"
-                    total-items="sentenceCtrl.totalItems" current-page="sentenceCtrl.currentPage"
+                    total-items="sentenceCtrl.totalItems" current-page="currentPage"
                     num-per-page="sentenceCtrl.numPerPage" search="sentenceCtrl.search()"
                     btn-funcs="sentenceCtrl.btnFuncs" btn-names="sentenceCtrl.btnNames"
                     btn-class="sentenceCtrl.btnClass"

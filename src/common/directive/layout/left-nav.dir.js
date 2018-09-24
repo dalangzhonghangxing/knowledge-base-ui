@@ -5,13 +5,14 @@
     'use strict';
 
     var utils = angular.module('Utils');
-    utils.directive("leftNavPanel", ['PathUtils', footerPanel]);
+    utils.directive("leftNavPanel", ['PathUtils', leftNavPanel]);
 
-    function footerPanel(PathUtils) {
+    function leftNavPanel(PathUtils) {
         return {
             restrict: 'E',
             bindToController: {
-                "menus":"="
+                "menus": "=",
+                "parent": "@"
             },
             controller: ['PathUtils', LeftNavPanelCtrl],
             controllerAs: 'leftNavPanelCtrl',
@@ -21,6 +22,13 @@
 
     function LeftNavPanelCtrl(PathUtils) {
         var vm = this;
+
+        init();
+
+        function init() {
+            var route = window.location.href.split("#/")[1];
+            vm.currentType = route;
+        }
 
     }
 

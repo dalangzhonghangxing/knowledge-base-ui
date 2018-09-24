@@ -227,28 +227,10 @@
 
     }
 
-    utils.service("exportStudent", ['$uibModal', 'PathUtils', exportStudent]);
-    function exportStudent($uibModal, PathUtils) {
-
-        this.showExportStudentPanel = showExportStudentPanel;
-
-        function showExportStudentPanel(searchCondition) {
-            $uibModal.open({
-                               animation: true,
-                               backdrop: 'static',
-                               size: "lg",
-                               templateUrl: PathUtils.qualifiedPath(
-                                   "/common/directive/exportStudentPanel.html"),
-                               controller: 'ExportPanelCtrl',
-                               controllerAs: 'exportPanelCtrl',
-                               windowClass: 'exportPanel',
-                               resolve: {
-                                   searchCondition: function () {
-                                       return searchCondition;
-                                   }
-                               }
-                           });
+    utils.filter("parseHTML", function ($sce) {
+        return function (text) {
+            return $sce.trustAsHtml(text);
         }
-    }
+    })
 
 })();

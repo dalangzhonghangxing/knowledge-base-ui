@@ -1,0 +1,19 @@
+<div ng-controller="PairCtrl as pairCtrl">
+    <!--<ol class="breadcrumb">-->
+    <!--<li><a href="/prepare/index.html">主页</a></li>-->
+    <!--<li><a href="/prepare/index.html">构建数据集</a></li>-->
+    <!--<li class="active">句子</li>-->
+    <!--</ol>-->
+    <button class="btn btn-primary" ng-click="pairCtrl.generate()">生成关系对</button>
+    <upload-panel upload-btn-name="'上传关系对'" template="'/download/pair.csv'" file="pairCtrl.file"
+                  upload-function="pairCtrl.upload()"></upload-panel>
+
+    <div style="margin-top: 20px;">
+        <info-table titles="pairCtrl.titles" fields="pairCtrl.fields" values="pairCtrl.values"
+                    total-items="pairCtrl.totalItems" current-page="currentPage"
+                    num-per-page="pairCtrl.numPerPage" search="pairCtrl.search()"
+                    btn-funcs="pairCtrl.btnFuncs" btn-names="pairCtrl.btnNames"
+                    btn-class="pairCtrl.btnClass" value-handler="pairCtrl.valueHandler"
+        ></info-table>
+    </div>
+</div>

@@ -15,6 +15,7 @@
         vm.deleteById = deleteById;
         vm.generate = generate;
         vm.getUntagedPair = getUntagedPair;
+        vm.tag = tag;
 
         function generate(callback) {
             connection.postWithProgress(API + "/generate", {}, callback)
@@ -45,6 +46,12 @@
             param[QUERY_PARAMS.PAGE] = page;
             param[QUERY_PARAMS.PAGE_SIZE] = size;
             connection.get(API + "/untaged", param, callback)
+        }
+
+        function tag(id, relationId, callback) {
+            var param = {};
+            param["relationId"] = relationId;
+            connection.post(API + "/" + id, param, callback);
         }
     }
 })();

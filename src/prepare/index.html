@@ -31,16 +31,16 @@
 <body ng-app="KBHome">
 <div class="container-fluid" ng-controller="KBCtrl as kbCtrl ">
     <!--上方导航栏-->
-    <top-nav-panel current-type="prepare"></top-nav-panel>
+    <top-nav-panel class="top-nav-panel" current-type="prepare"></top-nav-panel>
 
     <!--主体-->
     <div class="main">
         <!--左侧导航栏-->
         <div class="col-md-2 main-left">
-            <left-nav-panel menus="kbCtrl.menus"></left-nav-panel>
+            <left-nav-panel menus="kbCtrl.menus" parent="准备"></left-nav-panel>
         </div>
         <!--主页面-->
-        <div class="col-md-10 main-right">
+        <div class="col-md-offset-2 col-md-10 main-right">
             <div ng-view></div>
         </div>
     </div>
@@ -64,6 +64,10 @@
 <script src="index.app.js"></script>
 <script src="index.ctrl.js"></script>
 <script src="subPage/sentence.js"></script>
+<script src="subPage/knowledge.js"></script>
+<script src="subPage/pair.js"></script>
+<script src="subPage/relation.js"></script>
+<script src="subPage/tag.js"></script>
 
 <!-- endbuild -->
 </body>

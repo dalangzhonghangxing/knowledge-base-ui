@@ -1,0 +1,18 @@
+<div ng-controller="RelationCtrl as relationCtrl">
+    <!--<ol class="breadcrumb">-->
+    <!--<li><a href="/prepare/index.html">主页</a></li>-->
+    <!--<li><a href="/prepare/index.html">构建数据集</a></li>-->
+    <!--<li class="active">句子</li>-->
+    <!--</ol>-->
+    <upload-panel upload-btn-name="'上传知识点'" template="'/download/knowledge.csv'" file="relationCtrl.file"
+                  upload-function="relationCtrl.upload()"></upload-panel>
+
+    <div style="margin-top: 20px;">
+        <info-table titles="relationCtrl.titles" fields="relationCtrl.fields" values="relationCtrl.values"
+                    total-items="relationCtrl.totalItems" current-page="currentPage"
+                    num-per-page="relationCtrl.numPerPage" search="relationCtrl.search()"
+                    btn-funcs="relationCtrl.btnFuncs" btn-names="relationCtrl.btnNames"
+                    btn-class="relationCtrl.btnClass"
+        ></info-table>
+    </div>
+</div>

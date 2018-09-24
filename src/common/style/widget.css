@@ -549,19 +549,20 @@ Inline Social Icons
 }
 
 .main {
-  margin-top: -20px;
-  min-height: 600px;
+  margin-top: 50px;
+  min-height: 560px;
 }
 
 .main-left {
-  height: 600px;
-  border-right: #cdd3d8 1px solid;
+  min-height: 560px;
+  position: fixed;
 }
 
-.main-right{
+.main-right {
   padding-top: 20px;
-  height: 600px;
+  min-height: 560px;
   overflow-y: auto;
+  position: inherit;
 }
 
 .navbar-brand {
@@ -576,23 +577,86 @@ Inline Social Icons
   padding-top: 20px;
 }
 
-
 .main-foot {
   clear: both;
 }
 
-.navbar-nav{
+.navbar-nav {
   margin-left: 59px !important;
 }
 
 .breadcrumb {
-  background-color:#ffffff;
+  background-color: #ffffff;
 }
 
-.navbar-header{
+.navbar-header {
   padding-top: 10px;
 }
 
 .navbar-nav {
   padding-top: 10px;
+}
+
+.left-nav-top div {
+  padding-left: 40px;
+  width: 100%;
+  line-height: 50px;
+  background-color: #127abc;
+  text-indent: 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 16px;
+  color: #fff;
+}
+
+.left-nav-item-active > a {
+  padding-left: 40px;
+  display: block;
+  width: 100%;
+  line-height: 54px;
+  text-indent: 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 16px;
+  color: #47a4bd;
+  border-bottom: 1px solid #ddd;
+}
+
+.left-nav-item > a {
+  padding-left: 40px;
+  display: block;
+  width: 100%;
+  line-height: 54px;
+  text-indent: 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 16px;
+  color: #666;
+  border-bottom: 1px solid #ddd;
+}
+
+.left-nav  a:active {
+  text-decoration: none;
+}
+
+.left-nav  a:hover {
+  text-decoration: none;
+}
+
+.left-nav  a:link {
+  text-decoration: none;
+}
+
+.left-nav > ul {
+  padding: 0px;
+  border: 1px solid #ddd;
+  border-bottom: 0px;
+}
+
+.top-nav-panel {
+  position: fixed;
+  width: 100%;
 }

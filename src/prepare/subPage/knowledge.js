@@ -3,43 +3,39 @@
 
     var KBHome = angular.module('KBHome');
 
-    KBHome.controller('SentenceCtrl', ['sentenceDao', '$scope', SentenceCtrl]);
+    KBHome.controller('KnowledgeCtrl', ['knowledgeDao', '$scope','Prompt', KnowledgeCtrl]);
 
-    function SentenceCtrl(sentenceDao, $scope) {
+    function KnowledgeCtrl(knowledgeDao, $scope,Prompt) {
         var vm = this;
 
         // info-table参数
-        // vm.currentPage = 1;
         $scope.currentPage = 1;
         vm.numPerPage = 15;
-        vm.titles = ["原句", "分词后的句子"];
-        vm.fields = ["original", "splited"];
+        vm.titles = ["名称"];
+        vm.fields = ["name"];
         vm.btnFuncs = [update, deleteById];
         vm.btnNames = ["修改", "删除"];
         vm.btnClass = ["btn btn-primary", "btn btn-danger"];
 
         vm.upload = upload;
         vm.search = search;
-        vm.split = split;
 
         init();
 
         function init() {
-            search();
             $scope.$watch('currentPage', function (newValue, oldValue, scope) {
-                if (newValue != oldValue)
-                    search();
+                search();
             });
         }
 
         function upload() {
-            sentenceDao.upload(vm.file, function (res) {
+            knowledgeDao.upload(vm.file, function (res) {
 
             });
         }
 
         function search() {
-            sentenceDao.findByPage($scope.currentPage, vm.numPerPage, function (res) {
+            knowledgeDao.findByPage($scope.currentPage, vm.numPerPage, function (res) {
                 vm.values = res.content;
                 vm.totalItems = res.totalElements;
             });
@@ -49,16 +45,14 @@
 
         }
 
-        function deleteById() {
-
-        }
-
-        function split() {
-            sentenceDao.split(function (res) {
-                search();
+        function deleteById(value) {
+            Prompt.promptModifyMessage("是否确认删除该知识点？", function () {
+                knowledgeDao.deleteById(value.id,$scope.currentPage, vm.numPerPage, function (res) {
+                    vm.values = res.content;
+                    vm.totalItems = res.totalElements;
+                });
             });
         }
 
     }
-})
-();
+})();

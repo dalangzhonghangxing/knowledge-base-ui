@@ -104,12 +104,15 @@
 
         function postWithProgress(url, params, callback) {
             var random = new Date().getTime().toString();
-            param["tag"] = random;
+            params["tag"] = random;
 
             getProgress = $interval(function () {
                 $http({
                     'url': PathUtils.qualifiedAPIPath("/global/progress") + "?tag=" + random,
-                    'method': "get"
+                    'method': "get",
+                    "headers":{
+                        "withCredentials":true
+                    }
                 }).success(function (res) {
                     document.getElementById("mask-progress").innerHTML = res + '%';
                 }).error(function () {
@@ -122,6 +125,8 @@
                 'data': params,
                 'method': "post"
             }).then(function (res) {
+                if (getProgress != null)
+                    $interval.cancel(getProgress);
                 callback(res);
             }, function (error) {
                 conn.uploadErrorHandler(error.data, error.status, function () {

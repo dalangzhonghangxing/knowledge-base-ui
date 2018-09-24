@@ -43,8 +43,8 @@
         vm.checkAll = checkAll;
 
         init();
+
         function init() {
-            // vm.search();
             if (vm.btnDisableFunc == null)
                 vm.btnDisableFunc = function (obj, index) {
                     return false;
@@ -66,7 +66,7 @@
         }
 
         function pageChange() {
-            vm.search();
+            // vm.search();
         }
 
         function callback(index, value) {
