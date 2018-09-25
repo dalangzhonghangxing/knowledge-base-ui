@@ -23,6 +23,7 @@
         function submit() {
             if (func != null)
                 func(value);
+            $uibModalInstance.dismiss('cancel');
         }
     }
 })();

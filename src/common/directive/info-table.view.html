@@ -13,7 +13,9 @@
             </th>
             <th class="text-center" style="min-width: 50px;">序号</th>
             <th class="text-center" ng-repeat="title in infoTableCtrl.titles">{{title}}</th>
-            <th class="text-center" ng-show="infoTableCtrl.btnNames != null && infoTableCtrl.btnNames.length>0">操作</th>
+            <th class="text-center" style="width: {{infoTableCtrl.btnNames.length * 60}}px"
+                ng-show="infoTableCtrl.btnNames != null && infoTableCtrl.btnNames.length>0">操作
+            </th>
         </tr>
         </thead>
         <tbody>
@@ -27,7 +29,7 @@
                 ng-bind="infoTableCtrl.valueHandler(value[field],$index)"></td>
             <td class="text-center" ng-show="infoTableCtrl.btnNames != null && infoTableCtrl.btnNames.length>0">
                 <button style="margin-right: 5px;" ng-repeat="name in infoTableCtrl.btnNames"
-                        class="{{infoTableCtrl.btnClass[$index]}}"
+                        class="{{infoTableCtrl.btnClass[$index]}} btn-sm"
                         ng-disable="infoTableCtrl.btnDisableFunc(value,$index)"
                         ng-show="infoTableCtrl.btnShowFunc(value,$index)"
                         ng-click="infoTableCtrl.callback($index,value)">{{name}}

@@ -82,7 +82,6 @@ gulp.task('bower-install', function () {
         cwd: "./",
         base: "./src"
     }).pipe(debug()).pipe(install({cwd: "./"})));
-    console.log(cwd);
 });
 
 /**

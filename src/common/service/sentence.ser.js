@@ -14,6 +14,7 @@
         vm.findByPage = findByPage;
         vm.deleteById = deleteById;
         vm.split = split;
+        vm.save = save;
 
         function upload(file, callback) {
             var param = {};
@@ -37,6 +38,13 @@
 
         function split(callback) {
             connection.postWithProgress(API + "/split", {}, callback);
+        }
+
+        function save(value, callback) {
+            var id = 0;
+            if (value.id != null)
+                id = value.id;
+            connection.postByBody(API + "/" + id, value, callback);
         }
     }
 })();
