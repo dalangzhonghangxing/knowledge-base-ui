@@ -78,10 +78,11 @@ gulp.task("default", ["development"]);
 
 //install bower dependencies
 gulp.task('bower-install', function () {
-    return series(gulp.src("src/!(lib)/**/bower.json", {
+    return series(gulp.src("./bower.json", {
         cwd: "./",
         base: "./src"
     }).pipe(debug()).pipe(install({cwd: "./"})));
+    console.log(cwd);
 });
 
 /**
@@ -168,15 +169,15 @@ function copyModulesToDestForDeploy() {
 
     //copy bower files
     var libJs = gulp.src('./bower.json')
-        .pipe(through.obj(listDirectory)).pipe(map(chooseBowerFile))
-        .pipe(gulp.dest("./lib/js", {cwd: DEPLOY_DIR}));
+                    .pipe(through.obj(listDirectory)).pipe(map(chooseBowerFile))
+                    .pipe(gulp.dest("./lib/js", {cwd: DEPLOY_DIR}));
     var libStyle = gulp.src("./lib/style/**", srcDir).pipe(gulp.dest(DEPLOY_DIR));
     //common modules: first copy non-js files, then generate compressed js
     var commonCodes = gulp.src("./common/**/!(*.js)", srcDir).pipe(gulp.dest(DEPLOY_DIR));
     var commonJS = gulp.src(["./common/**/*!(.spec).js"], srcDir)
-        .pipe(gulpFilter("**/!(*.spec.js)"))
-        .pipe(angularFilesort()).pipe(concat("/common.app.min.js"))
-        .pipe(uglify()).pipe(gulp.dest(DEPLOY_DIR + "/common"));
+                       .pipe(gulpFilter("**/!(*.spec.js)"))
+                       .pipe(angularFilesort()).pipe(concat("/common.app.min.js"))
+                       .pipe(uglify()).pipe(gulp.dest(DEPLOY_DIR + "/common"));
     //copy modules
     var modules = gulp.src("./!(common|lib)/**/!(*.js)", srcDir).pipe(gulp.dest(DEPLOY_DIR));
     return es.merge(libJs, libStyle, commonCodes, commonJS, modules);
@@ -199,13 +200,13 @@ function injectForDeploy() {
     var apps = gulp.src("./!(common|lib)/**/*.app.js", srcDir).pipe(map(wiredepForApp));
     //inject page specific Javascripts and store injected files into target directory
     apps = apps.pipe(useref()).pipe(gulpif("*.js", uglify())).pipe(map(changeBase))
-        .pipe(gulp.dest(dest));
+               .pipe(gulp.dest(dest));
 
     //inject common libraries and store injected files into target directory
     var commonJS = gulp.src("./common/common.app.min.js", {read: false, cwd: dest, base: dest});
-    apps = apps.pipe(debug({title:"ready for inject"}))
-        .pipe(inject(commonJS, {relative: true}))
-        .pipe(gulp.dest(dest));
+    apps = apps.pipe(debug({title: "ready for inject"}))
+               .pipe(inject(commonJS, {relative: true}))
+               .pipe(gulp.dest(dest));
 
     return series(apps);
 }
@@ -221,9 +222,9 @@ function copyModulesToDestForDev() {
     var srcDir = {cwd: SRC_DIR, base: SRC_DIR};
 
     //copy bower files
-    var libJs = gulp.src('./bower.json')
-        .pipe(through.obj(listDirectory))
-        .pipe(gulp.dest("./lib/js", {cwd: DEV_DIR}));
+    var libJs = gulp.src('./bower.json').pipe(debug())
+                    .pipe(through.obj(listDirectory))
+                    .pipe(gulp.dest("./lib/js", {cwd: DEV_DIR}));
     var libStyle = gulp.src("./lib/style/**", srcDir).pipe(gulp.dest(DEV_DIR));
     //copy common
     var commonCodes = gulp.src("./common/**/*", srcDir).pipe(gulp.dest(DEV_DIR));
@@ -247,7 +248,7 @@ function injectForDev() {
     var srcDir = {cwd: SRC_DIR, base: SRC_DIR};
     //first inject bower dependencies
     var apps = gulp.src("./!(common|lib)/**/*.app.js", srcDir).pipe(map(wiredepForApp))
-        .pipe(map(changeBase)).pipe(gulp.dest(dest));
+                   .pipe(map(changeBase)).pipe(gulp.dest(dest));
     //inject common libraries
     var commonJS = gulp.src("./common/**/*.js", {read: true, cwd: dest, base: dest}).pipe(
         gulpFilter("**/!(*spec.js)")).pipe(angularFilesort());
@@ -265,7 +266,7 @@ function wiredepForApp(appFile, cb) {
         path: pathDir + "/" + fileName + ".html"
     });
 
-    console.log("wiredepForApp:"+ appFile.path);
+    console.log("wiredepForApp:" + appFile.path);
 
     fs.readFile(htmlFile.path, function (err, data) {
         try {
@@ -303,7 +304,8 @@ getWiredepOptions = function (jsonFile) {
                         if (isDeploy && filePath.indexOf(".min") === -1) {
                             var minFilePath = filePath.replace('.js', '.min.js');
                             //此处的filePath是相对路径,因此需要进行拼接
-                            var fullPath = path.join(process.cwd(), "/src", minFilePath.substr(minFilePath.indexOf("/lib")));
+                            var fullPath = path.join(process.cwd(), "/src",
+                                                     minFilePath.substr(minFilePath.indexOf("/lib")));
                             if (fs.existsSync(fullPath) == false) {
                                 return '<script src="' + filePath + '"></script>';
                             } else {
