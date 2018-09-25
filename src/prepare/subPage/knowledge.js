@@ -3,9 +3,9 @@
 
     var KBHome = angular.module('KBHome');
 
-    KBHome.controller('KnowledgeCtrl', ['knowledgeDao', '$scope','Prompt', KnowledgeCtrl]);
+    KBHome.controller('KnowledgeCtrl', ['knowledgeDao', '$scope', 'Prompt', "$uibModal", "PathUtils", KnowledgeCtrl]);
 
-    function KnowledgeCtrl(knowledgeDao, $scope,Prompt) {
+    function KnowledgeCtrl(knowledgeDao, $scope, Prompt, $uibModal, PathUtils) {
         var vm = this;
 
         // info-table参数
@@ -41,13 +41,39 @@
             });
         }
 
-        function update() {
+        function update(value) {
+            $uibModal.open({
+                               animation: true,
+                               templateUrl: PathUtils.qualifiedPath("/common/directive/text-modify.modal.html"),
+                               controller: 'TextModifyCtrl',
+                               controllerAs: 'textModifyCtrl',
+                               resolve: {
+                                   head: function () {
+                                       return "知识点编辑页面";
+                                   },
+                                   value: function () {
+                                       return value;
+                                   },
+                                   fields: function () {
+                                       return vm.fields;
+                                   },
+                                   labels: function () {
+                                       return vm.titles;
+                                   },
+                                   func: function () {
+                                       return doUpdate;
+                                   }
+                               }
+                           });
+        }
 
+        function doUpdate(value) {
+            alert(value.id);
         }
 
         function deleteById(value) {
             Prompt.promptModifyMessage("是否确认删除该知识点？", function () {
-                knowledgeDao.deleteById(value.id,$scope.currentPage, vm.numPerPage, function (res) {
+                knowledgeDao.deleteById(value.id, $scope.currentPage, vm.numPerPage, function (res) {
                     vm.values = res.content;
                     vm.totalItems = res.totalElements;
                 });

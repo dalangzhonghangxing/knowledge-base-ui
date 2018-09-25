@@ -1,0 +1,20 @@
+<div class="modal-header">
+  {{textModifyCtrl.head}}
+  <button type="button" class="close" ng-click="textModifyCtrl.cancel()">&times;</button>
+</div>
+<form class="form-horizontal">
+  <div class="modal-body">
+    <div class="form-group" ng-repeat="field in textModifyCtrl.fields">
+      <label class="col-sm-2 control-label">{{textModifyCtrl.labels[$index]}}</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control"
+            data-ng-model="textModifyCtrl.value[field]">
+      </div>
+    </div>
+
+  </div>
+</form>
+<div class="modal-footer">
+  <button class="btn btn-warning" type="button" ng-click="textModifyCtrl.submit()">确定</button>
+  <button class="btn btn-warning" type="button" ng-click="textModifyCtrl.cancel()">关闭</button>
+</div>

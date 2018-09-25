@@ -3,9 +3,9 @@
 
     var KBHome = angular.module('KBHome');
 
-    KBHome.controller('RelationCtrl', ['relationDao', '$scope','Prompt', RelationCtrl]);
+    KBHome.controller('RelationCtrl', ['relationDao', '$scope','Prompt', '$uibModal', 'PathUtils',RelationCtrl]);
 
-    function RelationCtrl(relationDao, $scope,Prompt) {
+    function RelationCtrl(relationDao, $scope,Prompt,$uibModal, PathUtils) {
         var vm = this;
 
         // info-table参数
@@ -41,8 +41,34 @@
             });
         }
 
-        function update() {
+        function update(value) {
+            $uibModal.open({
+                               animation: true,
+                               templateUrl: PathUtils.qualifiedPath("/common/directive/text-modify.modal.html"),
+                               controller: 'TextModifyCtrl',
+                               controllerAs: 'textModifyCtrl',
+                               resolve: {
+                                   head: function () {
+                                       return "关系编辑页面";
+                                   },
+                                   value: function () {
+                                       return value;
+                                   },
+                                   fields: function () {
+                                       return vm.fields;
+                                   },
+                                   labels: function () {
+                                       return vm.titles;
+                                   },
+                                   func: function () {
+                                       return doUpdate;
+                                   }
+                               }
+                           });
+        }
 
+        function doUpdate(value) {
+            alert(value.id);
         }
 
         function deleteById(value) {

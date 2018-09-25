@@ -3,9 +3,9 @@
 
     var KBHome = angular.module('KBHome');
 
-    KBHome.controller('SentenceCtrl', ['sentenceDao', '$scope', SentenceCtrl]);
+    KBHome.controller('SentenceCtrl', ['sentenceDao', '$scope','$uibModal', 'PathUtils', SentenceCtrl]);
 
-    function SentenceCtrl(sentenceDao, $scope) {
+    function SentenceCtrl(sentenceDao, $scope,$uibModal, PathUtils) {
         var vm = this;
 
         // info-table参数
@@ -45,8 +45,34 @@
             });
         }
 
-        function update() {
+        function update(value) {
+            $uibModal.open({
+                               animation: true,
+                               templateUrl: PathUtils.qualifiedPath("/common/directive/text-modify.modal.html"),
+                               controller: 'TextModifyCtrl',
+                               controllerAs: 'textModifyCtrl',
+                               resolve: {
+                                   head: function () {
+                                       return "句子编辑页面";
+                                   },
+                                   value: function () {
+                                       return value;
+                                   },
+                                   fields: function () {
+                                       return ["original"];
+                                   },
+                                   labels: function () {
+                                       return ["原句"];
+                                   },
+                                   func: function () {
+                                       return doUpdate;
+                                   }
+                               }
+                           });
+        }
 
+        function doUpdate(value) {
+            alert(value.id);
         }
 
         function deleteById() {

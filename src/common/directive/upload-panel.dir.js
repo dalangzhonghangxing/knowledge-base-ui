@@ -4,8 +4,8 @@
 (function () {
     'use strict';
 
-    var ecnuUtils = angular.module('Utils');
-    ecnuUtils.directive("uploadPanel", ['PathUtils', uploadPanel]);
+    var Utils = angular.module('Utils');
+    Utils.directive("uploadPanel", ['PathUtils', uploadPanel]);
 
     function uploadPanel(PathUtils) {
         return {
