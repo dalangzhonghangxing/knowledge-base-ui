@@ -11,14 +11,15 @@
         // info-table参数
         $scope.currentPage = 1;
         vm.numPerPage = 15;
-        vm.titles = ["名称","例子"];
-        vm.fields = ["name","example"];
+        vm.titles = ["编码","名称","例子"];
+        vm.fields = ["code","name","example"];
         vm.btnFuncs = [update, deleteById];
         vm.btnNames = ["修改", "删除"];
         vm.btnClass = ["btn btn-primary", "btn btn-danger"];
 
         vm.upload = upload;
         vm.search = search;
+        vm.update = update;
 
         init();
 
@@ -68,7 +69,9 @@
         }
 
         function doUpdate(value) {
-            alert(value.id);
+            relationDao.save(value, function (res) {
+                search();
+            })
         }
 
         function deleteById(value) {

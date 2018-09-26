@@ -90,7 +90,9 @@
         }
 
         function doUpdate(value) {
-            alert(value.id);
+            // pairDao.save(value, function (res) {
+            //     search();
+            // })
         }
 
         function deleteById() {

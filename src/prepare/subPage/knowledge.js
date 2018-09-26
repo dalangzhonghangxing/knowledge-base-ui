@@ -68,7 +68,9 @@
         }
 
         function doUpdate(value) {
-            alert(value.id);
+            knowledgeDao.save(value, function (res) {
+                search();
+            })
         }
 
         function deleteById(value) {

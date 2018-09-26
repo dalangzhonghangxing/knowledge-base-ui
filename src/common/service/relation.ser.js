@@ -13,6 +13,7 @@
         vm.upload = upload;
         vm.findByPage = findByPage;
         vm.deleteById = deleteById;
+        vm.save = save;
 
         function upload(file, callback) {
             var param = {};
@@ -32,6 +33,13 @@
             param[QUERY_PARAMS.PAGE] = page;
             param[QUERY_PARAMS.PAGE_SIZE] = size;
             connection.delete(API + "/" + id, param, callback)
+        }
+
+        function save(value, callback) {
+            var id = 0;
+            if (value.id != null)
+                id = value.id;
+            connection.postByBody(API + "/" + id, value, callback);
         }
     }
 })();

@@ -4,7 +4,8 @@
     <!--<li><a href="/prepare/index.html">构建数据集</a></li>-->
     <!--<li class="active">句子</li>-->
     <!--</ol>-->
-    <upload-panel upload-btn-name="'上传知识点'" template="'/download/knowledge.csv'" file="relationCtrl.file"
+    <button class="btn btn-primary" ng-click="relationCtrl.update({'id':0})">新增</button>
+    <upload-panel upload-btn-name="'上传关系'" template="'/download/knowledge.csv'" file="relationCtrl.file"
                   upload-function="relationCtrl.upload()"></upload-panel>
 
     <div style="margin-top: 20px;">
