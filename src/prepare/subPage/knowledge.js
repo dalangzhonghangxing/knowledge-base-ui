@@ -85,7 +85,7 @@
 
         function exportAll() {
             relationDao.exportAll(function (res) {
-                FileExport.export(res, "application/csv", "关系.csv");
+                FileExport.export(res, "application/csv", "知识点.csv");
             });
         }
 

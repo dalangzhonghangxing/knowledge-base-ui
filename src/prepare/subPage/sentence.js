@@ -95,7 +95,7 @@
 
         function exportAll() {
             sentenceDao.exportAll(function (res) {
-                FileExport.export(res, "application/csv", "关系.csv");
+                FileExport.export(res, "application/csv", "句子.csv");
             });
         }
 
