@@ -3,9 +3,9 @@
 
     var KBHome = angular.module('KBHome');
 
-    KBHome.controller('PairCtrl', ['pairDao', '$scope', '$uibModal', 'PathUtils', PairCtrl]);
+    KBHome.controller('PairCtrl', ['pairDao', '$scope', '$uibModal', 'PathUtils',"FileExport", PairCtrl]);
 
-    function PairCtrl(pairDao, $scope, $uibModal, PathUtils) {
+    function PairCtrl(pairDao, $scope, $uibModal, PathUtils,FileExport) {
         var vm = this;
 
         // info-table参数

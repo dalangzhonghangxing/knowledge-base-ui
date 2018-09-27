@@ -56,7 +56,7 @@
         }
 
         function exportAll(callback) {
-            conn.get(API + "/export", {}, callback,
+            connection.get(API + "/export", {}, callback,
                      {responseType: 'arraybuffer'});
         }
     }

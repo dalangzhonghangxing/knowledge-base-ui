@@ -3,9 +3,9 @@
 
     var KBHome = angular.module('KBHome');
 
-    KBHome.controller('KnowledgeCtrl', ['knowledgeDao', '$scope', 'Prompt', "$uibModal", "PathUtils", KnowledgeCtrl]);
+    KBHome.controller('KnowledgeCtrl', ['knowledgeDao', '$scope', 'Prompt', "$uibModal", "PathUtils","FileExport", KnowledgeCtrl]);
 
-    function KnowledgeCtrl(knowledgeDao, $scope, Prompt, $uibModal, PathUtils) {
+    function KnowledgeCtrl(knowledgeDao, $scope, Prompt, $uibModal, PathUtils,FileExport) {
         var vm = this;
 
         // info-table参数
