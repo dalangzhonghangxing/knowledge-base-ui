@@ -14,5 +14,7 @@
             {"name":"关系对","type":"pair","href":"#/pair"},
             {"name":"标注","type":"tag","href":"#/tag"},
         ];
+
+        vm.minHeight = window.screen.height-307;
     }
 })();

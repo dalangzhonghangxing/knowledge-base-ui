@@ -4,6 +4,10 @@
   display: none !important;
 }
 
+body {
+  overflow-x: hidden;
+}
+
 .hline {
   margin: 0px auto;
 }
