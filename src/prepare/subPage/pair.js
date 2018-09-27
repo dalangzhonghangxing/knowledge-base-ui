@@ -35,6 +35,7 @@
         vm.upload = upload;
         vm.search = search;
         vm.generate = generate;
+        vm.exportAll = exportAll;
 
         init();
 
@@ -96,7 +97,18 @@
         }
 
         function deleteById() {
+            Prompt.promptModifyMessage("是否确认删除该知识对？", function () {
+                pairDao.deleteById(value.id, $scope.currentPage, vm.numPerPage, function (res) {
+                    vm.values = res.content;
+                    vm.totalItems = res.totalElements;
+                });
+            });
+        }
 
+        function exportAll() {
+            pairDao.exportAll(function (res) {
+                FileExport.export(res, "application/csv", "关系.csv");
+            });
         }
 
     }

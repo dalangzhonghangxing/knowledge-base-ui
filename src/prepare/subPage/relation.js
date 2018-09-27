@@ -3,16 +3,17 @@
 
     var KBHome = angular.module('KBHome');
 
-    KBHome.controller('RelationCtrl', ['relationDao', '$scope','Prompt', '$uibModal', 'PathUtils',RelationCtrl]);
+    KBHome.controller('RelationCtrl',
+                      ['relationDao', '$scope', 'Prompt', '$uibModal', 'PathUtils', "FileExport", RelationCtrl]);
 
-    function RelationCtrl(relationDao, $scope,Prompt,$uibModal, PathUtils) {
+    function RelationCtrl(relationDao, $scope, Prompt, $uibModal, PathUtils, FileExport) {
         var vm = this;
 
         // info-table参数
         $scope.currentPage = 1;
         vm.numPerPage = 15;
-        vm.titles = ["编码","名称","例子"];
-        vm.fields = ["code","name","example"];
+        vm.titles = ["编码", "名称", "例子"];
+        vm.fields = ["code", "name", "example"];
         vm.btnFuncs = [update, deleteById];
         vm.btnNames = ["修改", "删除"];
         vm.btnClass = ["btn btn-primary", "btn btn-danger"];
@@ -20,6 +21,7 @@
         vm.upload = upload;
         vm.search = search;
         vm.update = update;
+        vm.exportAll = exportAll;
 
         init();
 
@@ -76,10 +78,16 @@
 
         function deleteById(value) {
             Prompt.promptModifyMessage("是否确认删除该关系？", function () {
-                relationDao.deleteById(value.id,$scope.currentPage, vm.numPerPage, function (res) {
+                relationDao.deleteById(value.id, $scope.currentPage, vm.numPerPage, function (res) {
                     vm.values = res.content;
                     vm.totalItems = res.totalElements;
                 });
+            });
+        }
+
+        function exportAll() {
+            relationDao.exportAll(function (res) {
+                FileExport.export(res, "application/csv", "关系.csv");
             });
         }
 

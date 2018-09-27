@@ -1,19 +1,20 @@
 <div ng-controller="RelationCtrl as relationCtrl">
-    <!--<ol class="breadcrumb">-->
-    <!--<li><a href="/prepare/index.html">主页</a></li>-->
-    <!--<li><a href="/prepare/index.html">构建数据集</a></li>-->
-    <!--<li class="active">句子</li>-->
-    <!--</ol>-->
-    <button class="btn btn-primary" ng-click="relationCtrl.update({'id':0})">新增</button>
-    <upload-panel upload-btn-name="'上传关系'" template="'/download/knowledge.csv'" file="relationCtrl.file"
-                  upload-function="relationCtrl.upload()"></upload-panel>
+  <!--<ol class="breadcrumb">-->
+  <!--<li><a href="/prepare/index.html">主页</a></li>-->
+  <!--<li><a href="/prepare/index.html">构建数据集</a></li>-->
+  <!--<li class="active">句子</li>-->
+  <!--</ol>-->
+  <button class="btn btn-primary" ng-click="relationCtrl.update({'id':0})">新增</button>
+  <upload-panel upload-btn-name="'上传关系'" template="'/download/knowledge.csv'" file="relationCtrl.file"
+      upload-function="relationCtrl.upload()"></upload-panel>
+  <button class="btn btn-primary" style="margin-left: 100px;" ng-click="relationCtrl.exportAll()">导出</button>
 
-    <div style="margin-top: 20px;">
-        <info-table titles="relationCtrl.titles" fields="relationCtrl.fields" values="relationCtrl.values"
-                    total-items="relationCtrl.totalItems" current-page="currentPage"
-                    num-per-page="relationCtrl.numPerPage" search="relationCtrl.search()"
-                    btn-funcs="relationCtrl.btnFuncs" btn-names="relationCtrl.btnNames"
-                    btn-class="relationCtrl.btnClass"
-        ></info-table>
-    </div>
+  <div style="margin-top: 20px;">
+    <info-table titles="relationCtrl.titles" fields="relationCtrl.fields" values="relationCtrl.values"
+        total-items="relationCtrl.totalItems" current-page="currentPage"
+        num-per-page="relationCtrl.numPerPage" search="relationCtrl.search()"
+        btn-funcs="relationCtrl.btnFuncs" btn-names="relationCtrl.btnNames"
+        btn-class="relationCtrl.btnClass"
+    ></info-table>
+  </div>
 </div>

@@ -2,9 +2,9 @@
     'use strict';
     var utils = angular.module('Utils');
 
-    utils.service("sentenceDao", ["$http", "connection", 'QUERY_PARAMS', sentenceDao]);
+    utils.service("sentenceDao", ["connection", 'QUERY_PARAMS', sentenceDao]);
 
-    function sentenceDao($http, connection, QUERY_PARAMS) {
+    function sentenceDao(connection, QUERY_PARAMS) {
 
         var vm = this;
 
@@ -15,6 +15,7 @@
         vm.deleteById = deleteById;
         vm.split = split;
         vm.save = save;
+        vm.exportAll = exportAll;
 
         function upload(file, callback) {
             var param = {};
@@ -45,6 +46,11 @@
             if (value.id != null)
                 id = value.id;
             connection.postByBody(API + "/" + id, value, callback);
+        }
+
+        function exportAll(callback) {
+            conn.get(API + "/export", {}, callback,
+                     {responseType: 'arraybuffer'});
         }
     }
 })();

@@ -19,6 +19,7 @@
 
         vm.upload = upload;
         vm.search = search;
+        vm.exportAll = exportAll;
 
         init();
 
@@ -79,6 +80,12 @@
                     vm.values = res.content;
                     vm.totalItems = res.totalElements;
                 });
+            });
+        }
+
+        function exportAll() {
+            relationDao.exportAll(function (res) {
+                FileExport.export(res, "application/csv", "关系.csv");
             });
         }
 

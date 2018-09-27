@@ -21,6 +21,7 @@
         vm.upload = upload;
         vm.search = search;
         vm.split = split;
+        vm.exportAll = exportAll;
 
         init();
 
@@ -78,12 +79,23 @@
         }
 
         function deleteById() {
-
+            Prompt.promptModifyMessage("是否确认删除该句子？句子强烈不建议删除！", function () {
+                sentenceDao.deleteById(value.id, $scope.currentPage, vm.numPerPage, function (res) {
+                    vm.values = res.content;
+                    vm.totalItems = res.totalElements;
+                });
+            });
         }
 
         function split() {
             sentenceDao.split(function (res) {
                 search();
+            });
+        }
+
+        function exportAll() {
+            sentenceDao.exportAll(function (res) {
+                FileExport.export(res, "application/csv", "关系.csv");
             });
         }
 

@@ -14,6 +14,7 @@
         vm.findByPage = findByPage;
         vm.deleteById = deleteById;
         vm.save = save;
+        vm.exportAll = exportAll;
 
         function upload(file, callback) {
             var param = {};
@@ -40,6 +41,11 @@
             if (value.id != null)
                 id = value.id;
             connection.postByBody(API + "/" + id, value, callback);
+        }
+
+        function exportAll(callback) {
+            connection.get(API + "/export", {}, callback,
+                     {responseType: 'arraybuffer'});
         }
     }
 })();

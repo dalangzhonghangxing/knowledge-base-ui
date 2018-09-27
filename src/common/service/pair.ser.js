@@ -16,6 +16,7 @@
         vm.generate = generate;
         vm.getUntagedPair = getUntagedPair;
         vm.tag = tag;
+        vm.exportAll = exportAll;
 
         function generate(callback) {
             connection.postWithProgress(API + "/generate", {}, callback)
@@ -52,6 +53,11 @@
             var param = {};
             param["relationId"] = relationId;
             connection.post(API + "/" + id, param, callback);
+        }
+
+        function exportAll(callback) {
+            conn.get(API + "/export", {}, callback,
+                     {responseType: 'arraybuffer'});
         }
     }
 })();

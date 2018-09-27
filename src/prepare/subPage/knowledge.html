@@ -6,6 +6,7 @@
     <!--</ol>-->
     <upload-panel upload-btn-name="'上传知识点'" template="'/download/knowledge.csv'" file="knowledgeCtrl.file"
                   upload-function="knowledgeCtrl.upload()"></upload-panel>
+    <button class="btn btn-primary" style="margin-left: 100px;" ng-click="knowledgeCtrl.exportAll()">导出</button>
 
     <div style="margin-top: 20px;">
         <info-table titles="knowledgeCtrl.titles" fields="knowledgeCtrl.fields" values="knowledgeCtrl.values"

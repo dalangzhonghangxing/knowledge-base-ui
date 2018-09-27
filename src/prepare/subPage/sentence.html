@@ -7,6 +7,7 @@
     <button class="btn btn-primary" ng-click="sentenceCtrl.split()">分词</button>
     <upload-panel upload-btn-name="'上传句子'" template="'/download/sentence.csv'" file="sentenceCtrl.file"
                   upload-function="sentenceCtrl.upload()"></upload-panel>
+    <button class="btn btn-primary" style="margin-left: 100px;" ng-click="sentenceCtrl.exportAll()">导出</button>
 
     <div style="margin-top: 20px;">
         <info-table titles="sentenceCtrl.titles" fields="sentenceCtrl.fields" values="sentenceCtrl.values"

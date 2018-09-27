@@ -7,6 +7,7 @@
     <button class="btn btn-primary" ng-click="pairCtrl.generate()">生成关系对</button>
     <upload-panel upload-btn-name="'上传关系对'" template="'/download/pair.csv'" file="pairCtrl.file"
                   upload-function="pairCtrl.upload()"></upload-panel>
+    <button class="btn btn-primary" style="margin-left: 100px;" ng-click="pairCtrl.exportAll()">导出</button>
 
     <div style="margin-top: 20px;">
         <info-table titles="pairCtrl.titles" fields="pairCtrl.fields" values="pairCtrl.values"
