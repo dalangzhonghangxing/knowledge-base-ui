@@ -6,8 +6,8 @@
  */
 (function () {
     'use strict';
-    var ecnuUtils = angular.module('Utils');
-    ecnuUtils.directive("infoTable", ['PathUtils', infoTable]);
+    var Utils = angular.module('Utils');
+    Utils.directive("infoTable", ['PathUtils', infoTable]);
 
     function infoTable(PathUtils) {
         return {
