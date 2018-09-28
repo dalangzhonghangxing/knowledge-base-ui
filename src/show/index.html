@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>知识库构建系统</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <meta content="" name="description"/>
+
+    <link href="../lib/style/font-awesome/css/font-awesome.min.css"
+          rel="stylesheet" type="text/css">
+
+    <!-- bower:css -->
+    <link rel="stylesheet" href="../lib/js/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../lib/js/fullcalendar/dist/fullcalendar.css"/>
+    <link rel="stylesheet" href="../lib/js/angular-timeline/dist/angular-timeline.css"/>
+    <!-- endbower -->
+
+    <!-- END GLOBAL MANDATORY STYLES -->
+    <!-- BEGIN PAGE LEVEL STYLES -->
+    <link href="../lib/style/simple-line-icons/simple-line-icons.min.css"
+          rel="stylesheet" type="text/css">
+    <link href="../common/style/widget.css" rel="stylesheet" type="text/css">
+    <!-- END PAGE LEVEL STYLES -->
+
+    <!-- 以下几个css是用于配置页面的布局样式 -->
+    <link rel="stylesheet" type="text/css" href="../common/style/footer.css"/>
+
+</head>
+<body ng-app="ShowHome">
+<div class="container-fluid" ng-controller="ShowCtrl as showCtrl ">
+    <!--上方导航栏-->
+    <top-nav-panel class="top-nav-panel" current-type="show"></top-nav-panel>
+
+    <!--主体-->
+    <div class="main">
+        <!--左侧导航栏-->
+        <div class="col-md-2 main-left">
+            <left-nav-panel menus="showCtrl.menus" parent="展示"></left-nav-panel>
+        </div>
+        <!--主页面-->
+        <div class="col-md-offset-2 col-md-10 main-right" style="{{'min-height:'+showCtrl.minHeight+'px'}}">
+            <div ng-view></div>
+        </div>
+    </div>
+
+    <!--页脚-->
+    <div class="main-foot">
+        <footer-panel></footer-panel>
+    </div>
+
+    <!--显示进度条的幕布-->
+    <div ng-include="'../common/mask.html'"></div>
+</div>
+
+<!-- bower:js -->
+<!-- endbower -->
+
+<!-- inject:js -->
+<!-- endinject -->
+
+<!-- build:js -->
+<script src="index.app.js"></script>
+<script src="index.ctrl.js"></script>
+<script src="subPage/knowledge-graph.js"></script>
+
+<!-- endbuild -->
+</body>
+</html>

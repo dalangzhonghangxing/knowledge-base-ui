@@ -1,7 +1,6 @@
 (function () {
     'use strict';
-    var KBHome = angular.module('KBHome', ['Utils', 'ui.bootstrap', 'ngRoute', 'ngAnimate',
-        'ng-echarts','ngFileUpload']);
+    var KBHome = angular.module('KBHome', ['Utils', 'ui.bootstrap', 'ngRoute', 'ngAnimate','ngFileUpload']);
 
     KBHome.config(config);
     config.$inject = ['$routeProvider'];
