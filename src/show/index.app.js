@@ -12,6 +12,8 @@
 
         $routeProvider.when('/knowledge-graph', {
             templateUrl: 'subPage/knowledge-graph.html'
+        }).when('/result', {
+            templateUrl: 'subPage/line-graph.html'
         });
 
     }
