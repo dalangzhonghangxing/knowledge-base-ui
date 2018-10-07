@@ -11,10 +11,11 @@
     scripts = scripts[scripts.length - 1].src;
     var ROOT_PATH = scripts.substring(0, scripts.lastIndexOf('/'));
     ROOT_PATH = ROOT_PATH.substring(0, ROOT_PATH.lastIndexOf('/'));
-    // SERVICE_API_ROOT: "http://219.228.60.212:16666/api/",
+    // 219.228.60.212
+    //58.198.176.191
     var ENDPOINTS = {
         ROOT_PATH: ROOT_PATH,
-        SERVICE_API_ROOT: "http://58.198.176.191:16666/api/",
+        SERVICE_API_ROOT: "http://localhost:16666/api/",
         STATIC_PATH: "http://localhost:8888"
     };
     Object.freeze(ENDPOINTS);

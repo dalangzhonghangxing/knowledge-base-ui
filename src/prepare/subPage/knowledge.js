@@ -84,7 +84,7 @@
         }
 
         function exportAll() {
-            relationDao.exportAll(function (res) {
+            knowledgeDao.exportAll(function (res) {
                 FileExport.export(res, "application/csv", "知识点.csv");
             });
         }
