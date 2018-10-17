@@ -3,9 +3,9 @@
 
     var KBHome = angular.module('KBHome');
 
-    KBHome.controller('SentenceCtrl', ['sentenceDao', '$scope', '$uibModal', 'PathUtils',"FileExport", SentenceCtrl]);
+    KBHome.controller('SentenceCtrl', ['sentenceDao', '$scope', '$uibModal', 'PathUtils',"FileExport",'Prompt', SentenceCtrl]);
 
-    function SentenceCtrl(sentenceDao, $scope, $uibModal, PathUtils,FileExport) {
+    function SentenceCtrl(sentenceDao, $scope, $uibModal, PathUtils,FileExport,Prompt) {
         var vm = this;
 
         // info-table参数
