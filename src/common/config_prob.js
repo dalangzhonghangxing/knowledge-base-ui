@@ -28,12 +28,12 @@
         //---------------以下分页相关---------------
 
         PAGE_SIZE: "size",
-
+        CONDITION: "condition",
         PAGE: "page",
 
         //------------以下为上传文件相关-------------
         FILE: "file",
-        TYPE: "type",
+        TYPE: "type"
 
     };
     Object.freeze(QUERY_PARAMS);
