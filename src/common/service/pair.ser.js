@@ -29,10 +29,11 @@
             connection.upload(API + "/upload", param, callback);
         }
 
-        function findByPage(page, size, callback) {
+        function findByPage(page, size,condition, callback) {
             var param = {};
             param[QUERY_PARAMS.PAGE] = page;
             param[QUERY_PARAMS.PAGE_SIZE] = size;
+            param[QUERY_PARAMS.CONDITION] = condition;
             connection.get(API + "/page", param, callback)
         }
 

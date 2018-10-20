@@ -7,6 +7,7 @@
 
     function PairCtrl(pairDao, $scope, $uibModal, PathUtils,FileExport) {
         var vm = this;
+        vm.searchConditon = {};
 
         // info-table参数
         $scope.currentPage = 1;
@@ -59,7 +60,7 @@
         }
 
         function search() {
-            pairDao.findByPage($scope.currentPage, vm.numPerPage, function (res) {
+            pairDao.findByPage($scope.currentPage, vm.numPerPage,vm.searchConditon, function (res) {
                 vm.values = res.content;
                 vm.totalItems = res.totalElements;
             });

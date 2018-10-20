@@ -15,6 +15,7 @@
         vm.deleteById = deleteById;
         vm.save = save;
         vm.exportAll = exportAll;
+        vm.getAll = getAll;
 
         function upload(file, callback) {
             var param = {};
@@ -46,6 +47,10 @@
         function exportAll(callback) {
             connection.get(API + "/export", {}, callback,
                      {responseType: 'arraybuffer'});
+        }
+
+        function getAll(callback) {
+            connection.get(API + "/all", {}, callback);
         }
     }
 })();

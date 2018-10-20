@@ -1,0 +1,28 @@
+<div class="form-horizontal">
+  <div class="form-group col-md-4">
+    <label class="col-sm-3 control-label">KnowledgeA</label>
+    <div class="col-sm-9">
+      <input type="text"
+          class="form-control" placeholder="请输入KnowledgeA"
+          ng-model="searchConditionCtrl.condition.knowledgeA">
+    </div>
+  </div>
+  <div class="form-group col-md-4">
+    <label class="col-sm-3 control-label">关系</label>
+    <div class="col-sm-9">
+      <select class="form-control" ng-model="searchConditionCtrl.condition.relation"
+      >
+        <option value="{{null}}">所有</option>
+        <option ng-repeat="relation in searchConditionCtrl.relations" value="{{relation.id}}">{{relation.name}}</option>
+      </select>
+    </div>
+  </div>
+  <div class="form-group col-md-4">
+    <label class="col-sm-3 control-label">KnowledgeB</label>
+    <div class="col-sm-9">
+      <input type="text"
+          class="form-control" placeholder="请输入KnowledgeB"
+          ng-model="searchConditionCtrl.condition.knowledgeB">
+    </div>
+  </div>
+</div>

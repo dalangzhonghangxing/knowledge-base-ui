@@ -1,22 +1,27 @@
 <div ng-controller="PairCtrl as pairCtrl">
-    <!--<ol class="breadcrumb">-->
-    <!--<li><a href="/prepare/index.html">主页</a></li>-->
-    <!--<li><a href="/prepare/index.html">构建数据集</a></li>-->
-    <!--<li class="active">句子</li>-->
-    <!--</ol>-->
+  <!--查询条件-->
+  <div>
+    <search-condition config="{'pair':true}" ng-model="pairCtrl.searchConditon"></search-condition>
+  </div>
+
+  <div style="clear: both">
+    <button class="btn btn-primary" ng-click="pairCtrl.search()">查找</button>
     <button class="btn btn-primary" ng-click="pairCtrl.generate()">生成关系对</button>
     <upload-panel upload-btn-name="'上传关系对'" template="'/download/pair.csv'" file="pairCtrl.file"
-                  upload-function="pairCtrl.upload()"></upload-panel>
+        upload-function="pairCtrl.upload()"></upload-panel>
     <button class="btn btn-primary" style="margin-left: 100px;" ng-click="pairCtrl.exportAll()">导出</button>
     <div style="float: right">
-        总对数{{pairCtrl.info.count}},标记数{{pairCtrl.info.tagedCount}},实例数{{pairCtrl.info.instanceCount}}。
+      总对数{{pairCtrl.info.count}},标记数{{pairCtrl.info.tagedCount}},实例数{{pairCtrl.info.instanceCount}}。
     </div>
-    <div style="margin-top: 20px;">
-        <info-table titles="pairCtrl.titles" fields="pairCtrl.fields" values="pairCtrl.values"
-                    total-items="pairCtrl.totalItems" current-page="currentPage"
-                    num-per-page="pairCtrl.numPerPage" search="pairCtrl.search()"
-                    btn-funcs="pairCtrl.btnFuncs" btn-names="pairCtrl.btnNames"
-                    btn-class="pairCtrl.btnClass" value-handler="pairCtrl.valueHandler"
-        ></info-table>
-    </div>
+  </div>
+
+  <!--表格-->
+  <div style="margin-top: 20px;">
+    <info-table titles="pairCtrl.titles" fields="pairCtrl.fields" values="pairCtrl.values"
+        total-items="pairCtrl.totalItems" current-page="currentPage"
+        num-per-page="pairCtrl.numPerPage" search="pairCtrl.search()"
+        btn-funcs="pairCtrl.btnFuncs" btn-names="pairCtrl.btnNames"
+        btn-class="pairCtrl.btnClass" value-handler="pairCtrl.valueHandler"
+    ></info-table>
+  </div>
 </div>
