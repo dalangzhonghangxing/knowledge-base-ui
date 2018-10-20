@@ -10,8 +10,10 @@
         vm.values = [];
         vm.pair = {};
         vm.defaultRelation;
+        vm.preQueue = [];// 记录以打标签的队列
 
         vm.next = next;
+        vm.pre = pre;
         document.onkeydown = keydown;
 
         init();
@@ -32,7 +34,7 @@
             })
         }
 
-
+        // 获取未标记的pair
         function getUntagedPair() {
             pairDao.getUntagedPair(1, 10, function (res) {
                 for (var i = 0; i < res.content.length; i++)
@@ -43,8 +45,18 @@
             });
         }
 
+        // 上一个pair，并将该pair从队列中移除
+        function pre() {
+            if (vm.preQueue.length > 0) {
+                vm.pair = vm.preQueue[vm.preQueue.length - 1];
+                vm.preQueue.splice(vm.preQueue.length - 1, 1);
+            }
+        }
+
+        // 提交并获取下一个未打标签的piar
         function next() {
             pairDao.tag(vm.pair.id, vm.relationId, function (res) {
+                vm.values.splice(0, 1);
                 getNext();
             })
         }
@@ -65,9 +77,18 @@
                         vm.pair.sentences[i].sentence += splitedWords[j];
                 }
             }
-            vm.values.splice(0, 1);
+            pushPreQueue(vm.pair);
+            // 缓存的未标记对长度<=3，则再从后台拿
             if (vm.values.length <= 3)
                 getUntagedPair();
+        }
+
+        // 将一个pair放入preQueue队列。
+        function pushPreQueue(pair) {
+            // preQueue值存放10个pair
+            if (vm.preQueue.length >= 10)
+                vm.preQueue.splice(0, 1);
+            vm.preQueue.push(vm.pair);
         }
 
         function getFocus() {

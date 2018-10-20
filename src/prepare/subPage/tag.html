@@ -52,7 +52,7 @@
                 </label>
             </div>
             <div class="text-center" style="margin-top: 20px;">
-                <button class="btn btn-primary" ng-click="tagCtrl.next()">上一个</button>
+                <button class="btn btn-primary" ng-click="tagCtrl.pre()" ng-disabled="tagCtrl.preQueue.length<=0">上一个</button>
                 <button class="btn btn-primary" style="margin-left: 40px;" ng-click="tagCtrl.next()">提交</button>
             </div>
         </div>
