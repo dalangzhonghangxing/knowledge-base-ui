@@ -43,6 +43,13 @@
             $scope.$watch('currentPage', function (newValue, oldValue, scope) {
                 search();
             });
+            getInfo();
+        }
+
+        function getInfo() {
+            pairDao.getInfo( function (res) {
+                vm.info = res;
+            });
         }
 
         function upload() {

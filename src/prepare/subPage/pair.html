@@ -8,7 +8,9 @@
     <upload-panel upload-btn-name="'上传关系对'" template="'/download/pair.csv'" file="pairCtrl.file"
                   upload-function="pairCtrl.upload()"></upload-panel>
     <button class="btn btn-primary" style="margin-left: 100px;" ng-click="pairCtrl.exportAll()">导出</button>
-
+    <div style="float: right">
+        总对数{{pairCtrl.info.count}},标记数{{pairCtrl.info.tagedCount}},实例数{{pairCtrl.info.instanceCount}}。
+    </div>
     <div style="margin-top: 20px;">
         <info-table titles="pairCtrl.titles" fields="pairCtrl.fields" values="pairCtrl.values"
                     total-items="pairCtrl.totalItems" current-page="currentPage"
