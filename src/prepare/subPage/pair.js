@@ -3,9 +3,9 @@
 
     var KBHome = angular.module('KBHome');
 
-    KBHome.controller('PairCtrl', ['pairDao', '$scope', '$uibModal', 'PathUtils',"FileExport", PairCtrl]);
+    KBHome.controller('PairCtrl', ['pairDao', '$scope', '$uibModal', 'PathUtils', "FileExport", PairCtrl]);
 
-    function PairCtrl(pairDao, $scope, $uibModal, PathUtils,FileExport) {
+    function PairCtrl(pairDao, $scope, $uibModal, PathUtils, FileExport) {
         var vm = this;
         vm.searchConditon = {};
 
@@ -14,9 +14,9 @@
         vm.numPerPage = 15;
         vm.titles = ["知识点A", "知识点B", "关系", "句子数量"];
         vm.fields = ["knowledgeA", "knowledgeB", 'relation', 'sentences'];
-        vm.btnFuncs = [deleteById];
-        vm.btnNames = ["删除"];
-        vm.btnClass = ["btn btn-danger"];
+        vm.btnFuncs = [modify, deleteById];
+        vm.btnNames = ["修改", "删除"];
+        vm.btnClass = ["btn btn-primary", "btn btn-danger"];
         vm.valueHandler = function (value, index) {
             if (vm.fields[index] == "knowledgeA" || vm.fields[index] == "knowledgeB") {
                 return value.name;
@@ -48,7 +48,7 @@
         }
 
         function getInfo() {
-            pairDao.getInfo( function (res) {
+            pairDao.getInfo(function (res) {
                 vm.info = res;
             });
         }
@@ -60,7 +60,7 @@
         }
 
         function search() {
-            pairDao.findByPage($scope.currentPage, vm.numPerPage,vm.searchConditon, function (res) {
+            pairDao.findByPage($scope.currentPage, vm.numPerPage, vm.searchConditon, function (res) {
                 vm.values = res.content;
                 vm.totalItems = res.totalElements;
             });
@@ -72,36 +72,35 @@
             });
         }
 
-        function update(value) {
-            $uibModal.open({
-                               animation: true,
-                               templateUrl: PathUtils.qualifiedPath("/common/directive/text-modify.modal.html"),
-                               controller: 'TextModifyCtrl',
-                               controllerAs: 'textModifyCtrl',
-                               resolve: {
-                                   head: function () {
-                                       return "知识对编辑页面";
-                                   },
-                                   value: function () {
-                                       return value;
-                                   },
-                                   fields: function () {
-                                       return vm.fields;
-                                   },
-                                   labels: function () {
-                                       return vm.titles;
-                                   },
-                                   func: function () {
-                                       return doUpdate;
+        function modify(value) {
+            pairDao.getById(value.id, function (res) {
+                vm.pair = res;
+                var splitedWords;
+                for (var i = 0; i < vm.pair.sentences.length; i++) {
+                    vm.pair.sentences[i].sentence = "";
+                    splitedWords = vm.pair.sentences[i].splited.split(" ");
+                    for (var j = 0; j < splitedWords.length; j++) {
+                        if (splitedWords[j] == vm.pair.knowledgeA.name)
+                            vm.pair.sentences[i].sentence += "<red>" + splitedWords[j] + "</red>";
+                        else if (splitedWords[j] == vm.pair.knowledgeB.name)
+                            vm.pair.sentences[i].sentence += "<blue>" + splitedWords[j] + "</blue>";
+                        else
+                            vm.pair.sentences[i].sentence += splitedWords[j];
+                    }
+                }
+                $uibModal.open({
+                                   animation: true,
+                                   templateUrl: "modifyPanel.html",
+                                   controller: 'ModifyPanelCtrl',
+                                   controllerAs: 'modifyPanelCtrl',
+                                   size: 'lg',
+                                   resolve: {
+                                       pair: function () {
+                                           return vm.pair;
+                                       }
                                    }
-                               }
-                           });
-        }
-
-        function doUpdate(value) {
-            // pairDao.save(value, function (res) {
-            //     search();
-            // })
+                               });
+            });
         }
 
         function deleteById() {
@@ -118,6 +117,22 @@
                 FileExport.export(res, "application/csv", "知识对.csv");
             });
         }
+    }
 
+    KBHome.controller('ModifyPanelCtrl', ['pairDao', "pair", '$uibModalInstance', ModifyPanelCtrl]);
+
+    function ModifyPanelCtrl(pairDao, pair, $uibModalInstance) {
+        var vm = this;
+        vm.pair = pair;
+
+        vm.submitFunc = function () {
+            pairDao.tag(vm.pair.id, vm.relationId, function () {
+                $uibModalInstance.close();
+            });
+        };
+
+        vm.close = function () {
+            $uibModalInstance.close();
+        };
     }
 })();

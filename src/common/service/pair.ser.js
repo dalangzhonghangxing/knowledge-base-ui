@@ -18,6 +18,7 @@
         vm.tag = tag;
         vm.exportAll = exportAll;
         vm.getInfo = getInfo;
+        vm.getById = getById;
 
         function generate(callback) {
             connection.postWithProgress(API + "/generate", {}, callback)
@@ -29,7 +30,7 @@
             connection.upload(API + "/upload", param, callback);
         }
 
-        function findByPage(page, size,condition, callback) {
+        function findByPage(page, size, condition, callback) {
             var param = {};
             param[QUERY_PARAMS.PAGE] = page;
             param[QUERY_PARAMS.PAGE_SIZE] = size;
@@ -59,11 +60,15 @@
 
         function exportAll(callback) {
             connection.get(API + "/export", {}, callback,
-                     {responseType: 'arraybuffer'});
+                           {responseType: 'arraybuffer'});
         }
 
         function getInfo(callback) {
             connection.get(API + "/info", {}, callback)
+        }
+
+        function getById(id, callback) {
+            connection.get(API + "/" + id, {}, callback)
         }
     }
 })();

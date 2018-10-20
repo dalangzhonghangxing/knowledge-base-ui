@@ -25,3 +25,16 @@
     ></info-table>
   </div>
 </div>
+
+<script type="text/ng-template" id="modifyPanel.html">
+  <div class="modal-header">
+    <h3 class="modal-title">知识对编辑</h3>
+  </div>
+  <div class="modal-body" id="modal-body">
+    <tag-pair ng-model="modifyPanelCtrl.relationId" pair="modifyPanelCtrl.pair"
+        submit-func="modifyPanelCtrl.submitFunc">
+      <button class="btn btn-primary" ng-click="modifyPanelCtrl.close()">取消</button>
+    </tag-pair>
+  </div>
+  <div class="modal-footer" style="border-top: none;"></div>
+</script>
