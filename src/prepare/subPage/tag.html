@@ -14,7 +14,8 @@
 </style>
 
 <div ng-controller="TagCtrl as tagCtrl">
-    <tag-pair ng-model="tagCtrl.relationId" pair="tagCtrl.pair" submit-func="tagCtrl.next">
+    <tag-pair ng-model="tagCtrl.relationId" pair="tagCtrl.pair"
+              graph-data="tagCtrl.graphData" submit-func="tagCtrl.next">
         <button class="btn btn-primary" ng-click="tagCtrl.pre()" ng-disabled="tagCtrl.preQueue.length<=0">上一个</button>
     </tag-pair>
 </div>

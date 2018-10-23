@@ -59,6 +59,11 @@
         function getNext() {
             vm.relationId = vm.defaultRelation;
             vm.pair = vm.values[0];
+
+            pairDao.getGraph(vm.pair.id, function (res) {
+                vm.graphData = res;
+            });
+
             var splitedWords;
             for (var i = 0; i < vm.pair.sentences.length; i++) {
                 vm.pair.sentences[i].sentence = "";

@@ -33,14 +33,29 @@
                                     label: {
                                         normal: {
                                             show: true,
-                                            textStyle:{
-                                                color:"#000"
+                                            textStyle: {
+                                                color: "#000"
                                             }
                                         },
                                         roam: true
                                     },
                                     edgeSymbol: ['circle', 'arrow'],
                                     edgeSymbolSize: [0, 5],
+                                    roam: true,
+                                    focusNodeAdjacency: true,
+                                    draggable:true,
+                                    lineStyle: {
+                                        normal: {
+                                            width: 0.5,
+                                            curveness: 0.3,
+                                            opacity: 0.7
+                                        }
+                                    },
+                                    force: {
+                                        // repulsion:100,//斥力，越大越松散
+                                        // edgeLength: [60]//边长
+                                        // gravity: 0.5//引力，越大越聚集
+                                    },
                                     data: json.nodes.map(function (node) {
                                         return {
                                             x: node.x,
@@ -50,9 +65,10 @@
                                             symbolSize: node.size,
                                             itemStyle: {
                                                 normal: {
-                                                    color: "red"
+                                                    color: node.color
                                                 }
-                                            }
+                                            },
+                                            fixed: true
                                         };
                                     }),
                                     edges: json.edges.map(function (edge) {
@@ -61,20 +77,12 @@
                                             target: edge.targetID + "",
                                             label: {
                                                 normal: {
-                                                    formatter: edge.r
+                                                    formatter: edge.r,
+                                                    show: true
                                                 }
                                             }
                                         };
-                                    }),
-                                    roam: true,
-                                    focusNodeAdjacency: true,
-                                    lineStyle: {
-                                        normal: {
-                                            width: 0.5,
-                                            curveness: 0.3,
-                                            opacity: 0.7
-                                        }
-                                    }
+                                    })
                                 }
                             ]
                         };
