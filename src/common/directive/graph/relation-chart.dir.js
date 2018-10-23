@@ -43,14 +43,14 @@
                                     edgeSymbolSize: [0, 5],
                                     roam: true,
                                     focusNodeAdjacency: true,
-                                    draggable:true,
-                                    lineStyle: {
-                                        normal: {
-                                            width: 0.5,
-                                            curveness: 0.3,
-                                            opacity: 0.7
-                                        }
-                                    },
+                                    draggable: true,
+                                    // lineStyle: {
+                                    //     normal: {
+                                    //         width: 0.5,
+                                    //         curveness: 0.3,
+                                    //         opacity: 0.7
+                                    //     }
+                                    // },
                                     force: {
                                         // repulsion:100,//斥力，越大越松散
                                         // edgeLength: [60]//边长
@@ -78,8 +78,30 @@
                                             label: {
                                                 normal: {
                                                     formatter: edge.r,
-                                                    show: true
+                                                    show: true,
+                                                    color: "#8d0011"
                                                 }
+                                            },
+                                            lineStyle: {
+                                                normal: {
+                                                    width: 2,
+                                                    curveness: 0.3,
+                                                    opacity: 0.9,
+                                                    color: {
+                                                        type: 'linear',
+                                                        x: 0,
+                                                        y: 0,
+                                                        x2: 0,
+                                                        y2: 1,
+                                                        colorStops: [{
+                                                            offset: 0, color: edge.c // 0% 处的颜色
+                                                        }, {
+                                                            offset: 1, color: edge.c // 100% 处的颜色
+                                                        }],
+                                                        globalCoord: false // 缺省为 false
+                                                    }
+                                                },
+
                                             }
                                         };
                                     })
