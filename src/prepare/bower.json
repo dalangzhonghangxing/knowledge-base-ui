@@ -18,6 +18,7 @@
     "ng-hopscotch": "0.1.2",
     "angular-timeline": "^1.7.0",
     "angular-local-storage": "~0.7.1",
+    "ng-echarts": "https://github.com/xiafan68/ng-echarts.git#echarts3-ng1.5",
     "bootstrap": "^3.3.0"
   },
   "overrides": {

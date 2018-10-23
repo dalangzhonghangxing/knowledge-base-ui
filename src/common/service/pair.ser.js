@@ -19,6 +19,7 @@
         vm.exportAll = exportAll;
         vm.getInfo = getInfo;
         vm.getById = getById;
+        vm.getGraph = getGraph;
 
         function generate(callback) {
             connection.postWithProgress(API + "/generate", {}, callback)
@@ -60,7 +61,7 @@
 
         function exportAll(callback) {
             connection.get(API + "/export", {}, callback,
-                           {responseType: 'arraybuffer'});
+                {responseType: 'arraybuffer'});
         }
 
         function getInfo(callback) {
@@ -69,6 +70,10 @@
 
         function getById(id, callback) {
             connection.get(API + "/" + id, {}, callback)
+        }
+
+        function getGraph(id,callback) {
+            connection.get(API + "/graph/" + id, {}, callback)
         }
     }
 })();

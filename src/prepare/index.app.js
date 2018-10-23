@@ -1,9 +1,11 @@
 (function () {
     'use strict';
-    var KBHome = angular.module('KBHome', ['Utils', 'ui.bootstrap', 'ngRoute', 'ngAnimate','ngFileUpload','ngFileSaver']);
+    var KBHome = angular.module('KBHome', ['Utils', 'ui.bootstrap', 'ngRoute', 'ngAnimate',
+        'ngFileUpload', 'ngFileSaver', 'ng-echarts']);
 
     KBHome.config(config);
     config.$inject = ['$routeProvider'];
+
     function config($routeProvider) {
         $routeProvider.when('/', {
             redirectTo: '/sentence'

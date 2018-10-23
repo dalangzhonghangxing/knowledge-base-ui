@@ -1,61 +1,73 @@
 <style>
-  red {
-    color: red;
-  }
+    red {
+        color: red;
+    }
 
-  blue {
-    color: blue;
-  }
+    blue {
+        color: blue;
+    }
 
-  .sentence {
-    margin-bottom: 15px;
-    font-size: 15px;
-  }
+    .sentence {
+        margin-bottom: 15px;
+        font-size: 15px;
+    }
+
+    .relation-chart {
+        width: 100%;
+        height: 300px;
+    }
 </style>
 
 <div>
-  <form class="form-horizontal">
-    <!--待标注知识对信息展示-->
-    <div class="col-md-6">
-      <div class="form-group text-center">
-        <h4>{{tagPairCtrl.pair.knowledgeA.name+'->'+tagPairCtrl.pair.knowledgeB.name}}</h4>
-      </div>
-      <div class="form-group">
-        <label class="col-sm-4 control-label" style="text-align: left">
-          相关句子：
-        </label>
-      </div>
-      <div class="sentence" ng-repeat="s in tagPairCtrl.pair.sentences" ng-bind-html="s.sentence | parseHTML">
+    <form class="form-horizontal">
+        <!--待标注知识对信息展示-->
+        <div class="col-md-6">
+            <div class="form-group text-center">
+                <h4>{{tagPairCtrl.pair.knowledgeA.name+'->'+tagPairCtrl.pair.knowledgeB.name}}</h4>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-4 control-label" style="text-align: left">
+                    相关句子：
+                </label>
+            </div>
+            <div class="sentence" ng-repeat="s in tagPairCtrl.pair.sentences" ng-bind-html="s.sentence | parseHTML">
 
-      </div>
-    </div>
+            </div>
+        </div>
 
-    <!--关系选择与控制-->
-    <div class="col-md-6">
-      <div class="form-group text-center">
-        <h4>请选择对应的关系</h4>
-      </div>
-      <div class="form-group">
-        <label class="control-label" style="text-align: left">
-          可选关系(可以通过
-          <red>方向键</red>
-          选择切换关系，
-          <red>回车键</red>
-          提交)
-        </label>
-      </div>
-      <div style="margin-left: 60px;" ng-repeat="relation in tagPairCtrl.relations">
-        <label class="radio-inline">
-          <input class="relation-radio" type="radio" name="optionsRadios" data-ng-model="tagPairCtrl.relationId"
-              value="{{relation.id}}">
-          {{relation.name+'('+relation.example+')'}}
-        </label>
-      </div>
-      <div class="text-center" style="margin-top: 20px;">
-        <!--用于添加按钮-->
-        <span ng-transclude></span>
-        <button class="btn btn-success" style="margin-left: 40px;" ng-click="tagPairCtrl.submit()">提交</button>
-      </div>
-    </div>
-  </form>
+        <!--右侧主体-->
+        <div class="col-md-6">
+            <!--关系图的展示-->
+            <div>
+                <relation-chart chart-data="tagPairCtrl.graphData"></relation-chart>
+            </div>
+
+            <!--关系选择与控制-->
+            <div class="form-group text-center">
+                <h4>请选择对应的关系</h4>
+            </div>
+            <div class="form-group">
+                <label class="control-label" style="text-align: left">
+                    可选关系(可以通过
+                    <red>方向键</red>
+                    选择切换关系，
+                    <red>回车键</red>
+                    提交)
+                </label>
+            </div>
+            <div style="margin-left: 60px;" ng-repeat="relation in tagPairCtrl.relations">
+                <label class="radio-inline">
+                    <input class="relation-radio" type="radio" name="optionsRadios"
+                           data-ng-model="tagPairCtrl.relationId"
+                           value="{{relation.id}}">
+                    {{relation.name+'('+relation.example+')'}}
+                </label>
+            </div>
+            <div class="text-center" style="margin-top: 20px;">
+                <!--用于添加按钮-->
+                <span ng-transclude></span>
+                <button class="btn btn-success" style="margin-left: 40px;" ng-click="tagPairCtrl.submit()">提交</button>
+            </div>
+        </div>
+    </form>
 </div>

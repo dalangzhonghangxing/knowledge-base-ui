@@ -13,6 +13,7 @@
             bindToController: {
                 relationId: "=ngModel", // 关系类型
                 pair: "=",//待标记关系对
+                graphData: "=",//关系图数据
                 submitFunc: "=" // 提交按钮响应方法
             },
             controller: ['relationDao', TagPairCtrl],
@@ -29,6 +30,7 @@
         vm.submit = submit;
 
         init();
+
         function init() {
             relationDao.getAll(function (res) {
                 vm.relations = res;

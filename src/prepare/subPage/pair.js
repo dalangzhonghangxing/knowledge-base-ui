@@ -73,33 +73,40 @@
         }
 
         function modify(value) {
-            pairDao.getById(value.id, function (res) {
-                vm.pair = res;
-                var splitedWords;
-                for (var i = 0; i < vm.pair.sentences.length; i++) {
-                    vm.pair.sentences[i].sentence = "";
-                    splitedWords = vm.pair.sentences[i].splited.split(" ");
-                    for (var j = 0; j < splitedWords.length; j++) {
-                        if (splitedWords[j] == vm.pair.knowledgeA.name)
-                            vm.pair.sentences[i].sentence += "<red>" + splitedWords[j] + "</red>";
-                        else if (splitedWords[j] == vm.pair.knowledgeB.name)
-                            vm.pair.sentences[i].sentence += "<blue>" + splitedWords[j] + "</blue>";
-                        else
-                            vm.pair.sentences[i].sentence += splitedWords[j];
+            pairDao.getGraph(value.id, function (res) {
+                // 获取用于画图的数据
+                var graphData = res;
+                pairDao.getById(value.id, function (res) {
+                    vm.pair = res;
+                    var splitedWords;
+                    for (var i = 0; i < vm.pair.sentences.length; i++) {
+                        vm.pair.sentences[i].sentence = "";
+                        splitedWords = vm.pair.sentences[i].splited.split(" ");
+                        for (var j = 0; j < splitedWords.length; j++) {
+                            if (splitedWords[j] == vm.pair.knowledgeA.name)
+                                vm.pair.sentences[i].sentence += "<red>" + splitedWords[j] + "</red>";
+                            else if (splitedWords[j] == vm.pair.knowledgeB.name)
+                                vm.pair.sentences[i].sentence += "<blue>" + splitedWords[j] + "</blue>";
+                            else
+                                vm.pair.sentences[i].sentence += splitedWords[j];
+                        }
                     }
-                }
-                $uibModal.open({
-                                   animation: true,
-                                   templateUrl: "modifyPanel.html",
-                                   controller: 'ModifyPanelCtrl',
-                                   controllerAs: 'modifyPanelCtrl',
-                                   size: 'lg',
-                                   resolve: {
-                                       pair: function () {
-                                           return vm.pair;
-                                       }
-                                   }
-                               });
+                    $uibModal.open({
+                        animation: true,
+                        templateUrl: "modifyPanel.html",
+                        controller: 'ModifyPanelCtrl',
+                        controllerAs: 'modifyPanelCtrl',
+                        size: 'lg',
+                        resolve: {
+                            pair: function () {
+                                return vm.pair;
+                            },
+                            graphData: function () {
+                                return graphData;
+                            }
+                        }
+                    });
+                });
             });
         }
 
@@ -119,11 +126,12 @@
         }
     }
 
-    KBHome.controller('ModifyPanelCtrl', ['pairDao', "pair", '$uibModalInstance', ModifyPanelCtrl]);
+    KBHome.controller('ModifyPanelCtrl', ['pairDao', "pair", "graphData",'$uibModalInstance', ModifyPanelCtrl]);
 
-    function ModifyPanelCtrl(pairDao, pair, $uibModalInstance) {
+    function ModifyPanelCtrl(pairDao, pair,graphData, $uibModalInstance) {
         var vm = this;
         vm.pair = pair;
+        vm.graphData=graphData;
 
         vm.submitFunc = function () {
             pairDao.tag(vm.pair.id, vm.relationId, function () {
