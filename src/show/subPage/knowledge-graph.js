@@ -3,16 +3,12 @@
 
     var ShowHome = angular.module('ShowHome');
 
-    ShowHome.controller('KnowledgeGraphCtrl', ['$http', 'PathUtils', KnowledgeGraphCtrl]);
+    ShowHome.controller('KnowledgeGraphCtrl', ['pairDao', KnowledgeGraphCtrl]);
 
-    function KnowledgeGraphCtrl($http, PathUtils) {
+    function KnowledgeGraphCtrl(pairDao) {
         var vm = this;
-        $http({
-                  method: 'GET',
-                  url: PathUtils.qualifiedPath("/download/mydata.json")
-              }).then(function (res) {
-            vm.data = res.data;
-            vm.data.title = "高中数学知识体系图"
+        pairDao.getAllGraph(function (res) {
+            vm.graphData = res;
         });
     }
 })();

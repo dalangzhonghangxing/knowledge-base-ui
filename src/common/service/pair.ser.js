@@ -20,6 +20,7 @@
         vm.getInfo = getInfo;
         vm.getById = getById;
         vm.getGraph = getGraph;
+        vm.getAllGraph = getAllGraph;
 
         function generate(callback) {
             connection.postWithProgress(API + "/generate", {}, callback)
@@ -74,6 +75,10 @@
 
         function getGraph(id,callback) {
             connection.get(API + "/graph/" + id, {}, callback)
+        }
+
+        function getAllGraph(callback) {
+            connection.get(API + "/graph", {}, callback)
         }
     }
 })();
