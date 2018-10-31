@@ -2,7 +2,7 @@
     'use strict';
     var TrainHome = angular.module('TrainHome');
 
-    TrainHome.controller('TrainCtrl', ["PathUtils",TrainCtrl]);
+    TrainHome.controller('TrainCtrl', [TrainCtrl]);
 
     function TrainCtrl() {
         var vm = this;

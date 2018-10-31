@@ -5,5 +5,18 @@
     }
 </style>
 <div ng-controller="KnowledgeGraphCtrl as knowledgeGraphCtrl">
+    <!--复选框-->
+    <div>
+        <div class="col-md-2" style="text-align: left" ng-repeat="relation in knowledgeGraphCtrl.relations">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" ng-model="relation.$checked">{{relation.name}}
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="text-center" style="clear: both;">
+        <button class="btn btn-primary" ng-click="knowledgeGraphCtrl.getGraph()">查找</button>
+    </div>
     <relation-chart chart-data="knowledgeGraphCtrl.graphData"></relation-chart>
 </div>
