@@ -3,17 +3,41 @@
 
     var ShowHome = angular.module('ShowHome');
 
-    ShowHome.controller('LineChartCtrl', ['$http', 'PathUtils', LineChartCtrl]);
+    ShowHome.controller('LineChartCtrl', ['resultDao', LineChartCtrl]);
 
-    function LineChartCtrl($http, PathUtils) {
+    function LineChartCtrl(resultDao) {
         var vm = this;
-        // $http({
-        //     method: 'GET',
-        //     url: PathUtils.qualifiedPath("/download/npmdepgraph.json")
-        // }).then(function (res) {
-        //     vm.data = res.data;
-        //     vm.data.title = "高中数学知识体系图"
-        // });
-        vm.data = {};
+        vm.modelNames = [];
+
+        vm.search = search;
+        init();
+
+        function init() {
+            resultDao.getModelNames(function (res) {
+                vm.modelNames = res;
+                vm.show = true;
+            });
+        }
+
+        function search() {
+            resultDao.getLineByModelName(vm.modelName, function (res) {
+                vm.loss = {};
+                vm.accuracy = {};
+                vm.loss["title"] = "loss";
+                vm.loss["legendData"] = res.legendData;
+                vm.loss["xAxisName"] = "epoch";
+                vm.loss["xAxisData"] = [];
+                vm.loss["yAxisName"] = "loss";
+                vm.loss["series"] = res.lossSeries;
+
+                vm.accuracy["title"] = "accuracy";
+                vm.accuracy["legendData"] = res.legendData;
+                vm.accuracy["xAxisName"] = "epoch";
+                vm.accuracy["xAxisData"] = [];
+                vm.accuracy["yAxisName"] = "loss";
+                vm.accuracy["series"] = res.accuracySeries;
+
+            });
+        }
     }
 })();
