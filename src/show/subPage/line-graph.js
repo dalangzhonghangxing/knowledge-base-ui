@@ -15,7 +15,6 @@
         function init() {
             resultDao.getModelNames(function (res) {
                 vm.modelNames = res;
-                vm.show = true;
             });
         }
 
@@ -36,6 +35,8 @@
                 vm.accuracy["xAxisData"] = [];
                 vm.accuracy["yAxisName"] = "loss";
                 vm.accuracy["series"] = res.accuracySeries;
+
+                vm.show = true;
 
             });
         }

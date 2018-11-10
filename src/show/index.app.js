@@ -14,6 +14,10 @@
             templateUrl: 'subPage/knowledge-graph.html'
         }).when('/result', {
             templateUrl: 'subPage/line-graph.html'
+        }).when('/accuracy', {
+            templateUrl: 'subPage/accuracy.html'
+        }).when('/loss', {
+            templateUrl: 'subPage/loss.html'
         });
 
     }
