@@ -8,34 +8,34 @@
         margin-top: 30px;
     }
 </style>
-<div ng-controller="LineChartCtrl as ctrl">
+<div ng-controller="LineChartCtrl as lineCharCtrl">
 
     <!--下拉框选取模型-->
     <div style="margin-top: 20px;">
         <div class="form-group col-md-4">
             <label class="col-sm-3 control-label">模型</label>
             <div class="col-sm-9">
-                <select class="form-control" ng-model="ctrl.modelName"
+                <select class="form-control" ng-model="lineCharCtrl.modelName"
                 >
                     <option value="{{null}}">请选择模型</option>
-                    <option ng-repeat="name in ctrl.modelNames" value="{{name}}">
+                    <option ng-repeat="name in lineCharCtrl.modelNames" value="{{name}}">
                         {{name}}
                     </option>
                 </select>
             </div>
         </div>
         <div class="col-md-4">
-            <button class="btn btn-primary" ng-click="ctrl.search()">查看</button>
+            <button class="btn btn-primary" ng-click="lineCharCtrl.search()">查看</button>
         </div>
     </div>
 
     <!--折线图-->
-    <div ng-show="ctrl.show" style="clear: both;">
+    <div ng-show="lineCharCtrl.show" style="clear: both;">
         <div class="chart-panel">
-            <line-chart chart-data="ctrl.loss"></line-chart>
+            <line-chart chart-data="lineCharCtrl.loss"></line-chart>
         </div>
         <div class="chart-panel">
-            <line-chart chart-data="ctrl.accuracy"></line-chart>
+            <line-chart chart-data="lineCharCtrl.accuracy"></line-chart>
         </div>
     </div>
 </div>
