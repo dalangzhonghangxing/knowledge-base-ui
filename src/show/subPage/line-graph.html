@@ -18,7 +18,7 @@
                 <select class="form-control" ng-model="lineCharCtrl.modelName"
                 >
                     <option value="{{null}}">请选择模型</option>
-                    <option ng-repeat="name in lineCharCtrl.modelNames | track by:'$index'" value="{{name}}">
+                    <option ng-repeat="name in lineCharCtrl.modelNames" value="{{name}}">
                         {{name}}
                     </option>
                 </select>
