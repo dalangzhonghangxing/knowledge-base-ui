@@ -1,9 +1,9 @@
 (function () {
     'use strict';
 
-    var ShowHome = angular.module('ShowHome');
+    var TrainHome = angular.module('TrainHome');
 
-    ShowHome.controller('LineChartCtrl', ['resultDao', LineChartCtrl]);
+    TrainHome.controller('LineChartCtrl', ['resultDao', LineChartCtrl]);
 
     function LineChartCtrl(resultDao) {
         var vm = this;

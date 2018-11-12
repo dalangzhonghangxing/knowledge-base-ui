@@ -1,9 +1,9 @@
 (function () {
     'use strict';
 
-    var ShowHome = angular.module('ShowHome');
+    var TrainHome = angular.module('TrainHome');
 
-    ShowHome.controller('LossCtrl', ['resultDao', LossCtrl]);
+    TrainHome.controller('LossCtrl', ['resultDao', LossCtrl]);
 
     function LossCtrl(resultDao) {
         var vm = this;

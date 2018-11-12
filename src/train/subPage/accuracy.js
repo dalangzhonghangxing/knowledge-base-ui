@@ -1,9 +1,9 @@
 (function () {
     'use strict';
 
-    var ShowHome = angular.module('ShowHome');
+    var TrainHome = angular.module('TrainHome');
 
-    ShowHome.controller('AccuracyCtrl', ['resultDao', AccuracyCtrl]);
+    TrainHome.controller('AccuracyCtrl', ['resultDao', AccuracyCtrl]);
 
     function AccuracyCtrl(resultDao) {
         var vm = this;

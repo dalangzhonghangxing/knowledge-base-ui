@@ -22,6 +22,8 @@
         vm.getGraph = getGraph;
         vm.getAllGraph = getAllGraph;
         vm.generateDataset = generateDataset;
+        vm.getCountData = getCountData;
+
 
         function generate(callback) {
             connection.postWithProgress(API + "/generate", {}, callback)
@@ -84,6 +86,10 @@
 
         function getAllGraph(relationIds,callback) {
             connection.get(API + "/graph", {"relationIds":relationIds}, callback)
+        }
+
+        function getCountData(callback) {
+            connection.get(API + "/count", {}, callback)
         }
     }
 })();

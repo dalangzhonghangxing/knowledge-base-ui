@@ -8,12 +8,12 @@
         margin-top: 30px;
     }
 </style>
-<div ng-controller="DataSetCtrl as dataSetCtrl">
-    <!--<button class="btn btn-primary" ng-click="dataSetCtrl.generateDataset()">生成数据集</button>-->
+<div ng-controller="AnalysisCtrl as ctrl">
+
     <!--柱状图-->
     <div style="clear: both;">
         <div class="chart-panel">
-            <bar-chart chart-data="dataSetCtrl.data"></bar-chart>
+            <bar-chart chart-data="ctrl.data"></bar-chart>
         </div>
     </div>
 </div>

@@ -9,8 +9,10 @@
 
         vm.menus = [
             {"name":"数据集","type":"dataset","href":"#/dataset"},
-            {"name":"特征工程","type":"feature","href":"#/feature"},
-            {"name":"模型","type":"model","href":"#/model"}
+            {"name":"单模型结果","type":"result","href":"#/result"},
+            {"name":"accuracy对比","type":"accuracy","href":"#/accuracy"},
+            {"name":"loss对比","type":"loss","href":"#/loss"},
+
         ];
 
         vm.minHeight = window.screen.height-307;

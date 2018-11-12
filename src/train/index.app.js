@@ -1,6 +1,6 @@
 (function () {
     'use strict';
-    var TrainHome = angular.module('TrainHome', ['Utils', 'ui.bootstrap', 'ngRoute', 'ngAnimate','ngFileUpload','ngFileSaver']);
+    var TrainHome = angular.module('TrainHome', ['Utils', 'ui.bootstrap', 'ngRoute', 'ngAnimate','ngFileUpload','ngFileSaver','ng-echarts']);
 
     TrainHome.config(config);
     config.$inject = ['$routeProvider'];
@@ -11,10 +11,14 @@
 
         $routeProvider.when('/dataset', {
             templateUrl: 'subPage/dataset.html'
-        }).when('/feature', {
-            templateUrl: 'subPage/feature.html'
-        }).when('/model', {
-            templateUrl: 'subPage/model.html'
+        }).when('/analysis', {
+            templateUrl: 'subPage/analysis.html'
+        }).when('/result', {
+            templateUrl: 'subPage/line-graph.html'
+        }).when('/accuracy', {
+            templateUrl: 'subPage/accuracy.html'
+        }).when('/loss', {
+            templateUrl: 'subPage/loss.html'
         });
 
     }
