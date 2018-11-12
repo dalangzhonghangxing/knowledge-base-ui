@@ -38,7 +38,7 @@
         </tr>
         </tbody>
     </table>
-    <div class="form-inline forPagination">
+    <div class="form-inline forPagination" ng-show="infoTableCtrl.totalItems!=null">
         <div class="col-md-3"></div>
         <div class="text-center col-md-6">
             <uib-pagination total-items="infoTableCtrl.totalItems" ng-model="infoTableCtrl.currentPage"

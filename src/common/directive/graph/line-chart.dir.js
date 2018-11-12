@@ -19,7 +19,7 @@
                     if (json != null) {
                         var option = {
                             title: {
-                                text: json.title
+                                text: json.title,
                             },
                             tooltip: {
                                 trigger: 'axis'
@@ -40,6 +40,7 @@
                             },
                             xAxis: {
                                 name: json.xAxisName,
+                                nameLocation:"middle",
                                 type: 'category',
                                 boundaryGap: false,
                                 data: json.xAxisData

@@ -13,8 +13,8 @@
             templateUrl: 'subPage/dataset.html'
         }).when('/analysis', {
             templateUrl: 'subPage/analysis.html'
-        }).when('/result', {
-            templateUrl: 'subPage/line-graph.html'
+        }).when('/result-manage', {
+            templateUrl: 'subPage/result-manage.html'
         }).when('/accuracy', {
             templateUrl: 'subPage/accuracy.html'
         }).when('/loss', {

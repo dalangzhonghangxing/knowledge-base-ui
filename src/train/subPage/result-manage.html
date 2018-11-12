@@ -1,0 +1,34 @@
+<style>
+    .line-chart {
+        height: 300px;
+        width: 480px;
+    }
+
+    .chart-panel {
+        margin-top: 30px;
+        text-align: center;
+        width: 50%;
+        float: left;
+    }
+</style>
+<div ng-controller="ResultManageCtrl as ctrl">
+    <info-table titles="ctrl.titles" fields="ctrl.fields" values="ctrl.models"
+                btn-funcs="ctrl.btnFuncs" btn-names="ctrl.btnNames"
+                btn-class="ctrl.btnClass"
+    ></info-table>
+</div>
+
+<script type="text/ng-template" id="result.html">
+    <div class="modal-header">
+        <h3 class="modal-title">{{ctrl.modelName}}</h3>
+    </div>
+    <div class="modal-body" id="modal-body" style="width: 1000px">
+        <div class="chart-panel">
+            <line-chart chart-data="ctrl.loss"></line-chart>
+        </div>
+        <div class="chart-panel">
+            <line-chart chart-data="ctrl.accuracy"></line-chart>
+        </div>
+    </div>
+    <div class="modal-footer" style="border-top: none;"></div>
+</script>

@@ -9,7 +9,7 @@
 
         vm.menus = [
             {"name":"数据集","type":"dataset","href":"#/dataset"},
-            {"name":"单模型结果","type":"result","href":"#/result"},
+            {"name":"结果管理","type":"result-manage","href":"#/result-manage"},
             {"name":"accuracy对比","type":"accuracy","href":"#/accuracy"},
             {"name":"loss对比","type":"loss","href":"#/loss"},
 

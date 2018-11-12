@@ -18,8 +18,8 @@
                 values: "=",//所有的元数据
                 valueHandler: "=?",//用处对某些不能直接显示的值进行处理
                 totalItems: "=",//记录总条
-                currentPage: "=",//当前页面
-                numPerPage: "=",//每页显示记录数
+                currentPage: "=?",//当前页面
+                numPerPage: "=?",//每页显示记录数
                 search: "&",//搜索方法，无参
                 btnNames: "=?",//操作按钮的名称，应该与方法列表长度一致
                 btnFuncs: "=?",//操作按钮的方法列表，每个方法都需要接收object对象与callback
@@ -58,6 +58,12 @@
                     return obj;
                 }
             }
+            if (vm.currentPage == null)
+                vm.currentPage = 1;
+
+            if (vm.numPerPage == null)
+                vm.numPerPage = 0;
+
             if (vm.btnClass == null) {
                 vm.btnClass = [];
                 for (var i = 0; i < vm.btnNames.length; i++)
