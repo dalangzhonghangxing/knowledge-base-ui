@@ -1,40 +1,41 @@
 <div ng-controller="PairCtrl as pairCtrl">
-  <!--查询条件-->
-  <div>
-    <search-condition config="{'pair':true}" ng-model="pairCtrl.searchConditon"></search-condition>
-  </div>
-
-  <div style="clear: both">
-    <button class="btn btn-primary" ng-click="pairCtrl.search()">查找</button>
-    <button class="btn btn-primary" ng-click="pairCtrl.generate()">生成关系对</button>
-    <upload-panel upload-btn-name="'上传关系对'" template="'/download/pair.csv'" file="pairCtrl.file"
-        upload-function="pairCtrl.upload()"></upload-panel>
-    <button class="btn btn-primary" style="margin-left: 100px;" ng-click="pairCtrl.exportAll()">导出</button>
-    <div style="float: right">
-      总对数{{pairCtrl.info.count}},标记数{{pairCtrl.info.tagedCount}},已标记实例总数{{pairCtrl.info.instanceCount}},实例总数{{pairCtrl.info.tagedInstanceCount}}。
+    <!--查询条件-->
+    <div>
+        <search-condition config="{'pair':true}" ng-model="pairCtrl.searchConditon"></search-condition>
     </div>
-  </div>
 
-  <!--表格-->
-  <div style="margin-top: 20px;">
-    <info-table titles="pairCtrl.titles" fields="pairCtrl.fields" values="pairCtrl.values"
-        total-items="pairCtrl.totalItems" current-page="currentPage"
-        num-per-page="pairCtrl.numPerPage" search="pairCtrl.search()"
-        btn-funcs="pairCtrl.btnFuncs" btn-names="pairCtrl.btnNames"
-        btn-class="pairCtrl.btnClass" value-handler="pairCtrl.valueHandler"
-    ></info-table>
-  </div>
+    <div style="clear: both">
+        <button class="btn btn-primary" ng-click="pairCtrl.search()">查找</button>
+        <button class="btn btn-warning" ng-click="pairCtrl.generate()">生成关系对</button>
+        <button class="btn btn-primary" ng-click="pairCtrl.allocateSentence()">分配句子实例</button>
+        <upload-panel upload-btn-name="'上传关系对'" template="'/download/pair.csv'" file="pairCtrl.file"
+                      upload-function="pairCtrl.upload()"></upload-panel>
+        <button class="btn btn-primary" style="margin-left: 100px;" ng-click="pairCtrl.exportAll()">导出</button>
+        <div style="float: right">
+            总对数{{pairCtrl.info.count}},标记数{{pairCtrl.info.tagedCount}},已标记实例总数{{pairCtrl.info.instanceCount}},实例总数{{pairCtrl.info.tagedInstanceCount}}。
+        </div>
+    </div>
+
+    <!--表格-->
+    <div style="margin-top: 20px;">
+        <info-table titles="pairCtrl.titles" fields="pairCtrl.fields" values="pairCtrl.values"
+                    total-items="pairCtrl.totalItems" current-page="currentPage"
+                    num-per-page="pairCtrl.numPerPage" search="pairCtrl.search()"
+                    btn-funcs="pairCtrl.btnFuncs" btn-names="pairCtrl.btnNames"
+                    btn-class="pairCtrl.btnClass" value-handler="pairCtrl.valueHandler"
+        ></info-table>
+    </div>
 </div>
 
 <script type="text/ng-template" id="modifyPanel.html">
-  <div class="modal-header">
-    <h3 class="modal-title">知识对编辑</h3>
-  </div>
-  <div class="modal-body" id="modal-body">
-    <tag-pair ng-model="modifyPanelCtrl.relationId" pair="modifyPanelCtrl.pair"
-        submit-func="modifyPanelCtrl.submitFunc" graph-data="modifyPanelCtrl.graphData">
-      <button class="btn btn-primary" ng-click="modifyPanelCtrl.close()">取消</button>
-    </tag-pair>
-  </div>
-  <div class="modal-footer" style="border-top: none;"></div>
+    <div class="modal-header">
+        <h3 class="modal-title">知识对编辑</h3>
+    </div>
+    <div class="modal-body" id="modal-body">
+        <tag-pair ng-model="modifyPanelCtrl.relationId" pair="modifyPanelCtrl.pair"
+                  submit-func="modifyPanelCtrl.submitFunc" graph-data="modifyPanelCtrl.graphData">
+            <button class="btn btn-primary" ng-click="modifyPanelCtrl.close()">取消</button>
+        </tag-pair>
+    </div>
+    <div class="modal-footer" style="border-top: none;"></div>
 </script>

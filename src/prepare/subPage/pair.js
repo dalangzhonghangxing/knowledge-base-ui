@@ -3,9 +3,9 @@
 
     var KBHome = angular.module('KBHome');
 
-    KBHome.controller('PairCtrl', ['pairDao', '$scope', '$uibModal', 'PathUtils', "FileExport", PairCtrl]);
+    KBHome.controller('PairCtrl', ['pairDao', '$scope', '$uibModal', 'PathUtils', "FileExport", "Prompt", PairCtrl]);
 
-    function PairCtrl(pairDao, $scope, $uibModal, PathUtils, FileExport) {
+    function PairCtrl(pairDao, $scope, $uibModal, PathUtils, FileExport, Prompt) {
         var vm = this;
         vm.searchConditon = {};
 
@@ -37,6 +37,7 @@
         vm.search = search;
         vm.generate = generate;
         vm.exportAll = exportAll;
+        vm.allocateSentence = allocateSentence;
 
         init();
 
@@ -69,6 +70,13 @@
         function generate() {
             pairDao.generate(function () {
                 search();
+                Prompt.promptSuccessMessage("关系对已生成!")
+            });
+        }
+
+        function allocateSentence() {
+            pairDao.allocateSentences(function (res) {
+                Prompt.promptSuccessMessage("共记" + res.data.size + "个实例!")
             });
         }
 
@@ -126,12 +134,12 @@
         }
     }
 
-    KBHome.controller('ModifyPanelCtrl', ['pairDao', "pair", "graphData",'$uibModalInstance', ModifyPanelCtrl]);
+    KBHome.controller('ModifyPanelCtrl', ['pairDao', "pair", "graphData", '$uibModalInstance', ModifyPanelCtrl]);
 
-    function ModifyPanelCtrl(pairDao, pair,graphData, $uibModalInstance) {
+    function ModifyPanelCtrl(pairDao, pair, graphData, $uibModalInstance) {
         var vm = this;
         vm.pair = pair;
-        vm.graphData=graphData;
+        vm.graphData = graphData;
 
         vm.submitFunc = function () {
             pairDao.tag(vm.pair.id, vm.relationId, function () {

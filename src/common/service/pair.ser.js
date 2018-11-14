@@ -23,14 +23,19 @@
         vm.getAllGraph = getAllGraph;
         vm.generateDataset = generateDataset;
         vm.getCountData = getCountData;
+        vm.allocateSentences = allocateSentences;
 
 
         function generate(callback) {
-            connection.postWithProgress(API + "/generate", {}, callback)
+            connection.postWithProgress(API + "/generate", {}, callback);
         }
 
         function generateDataset(callback) {
-            connection.postWithProgress(API + "/generate-dataset", {}, callback)
+            connection.postWithProgress(API + "/generate-dataset", {}, callback);
+        }
+
+        function allocateSentences(callback) {
+            connection.postWithProgress(API + "/sentences", {}, callback);
         }
 
         function upload(file, callback) {
