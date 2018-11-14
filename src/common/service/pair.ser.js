@@ -24,6 +24,7 @@
         vm.generateDataset = generateDataset;
         vm.getCountData = getCountData;
         vm.allocateSentences = allocateSentences;
+        vm.getInstanceCountData = getInstanceCountData;
 
 
         function generate(callback) {
@@ -95,6 +96,10 @@
 
         function getCountData(callback) {
             connection.get(API + "/count", {}, callback)
+        }
+
+        function getInstanceCountData(callback) {
+            connection.get(API + "/instance-count", {}, callback)
         }
     }
 })();
