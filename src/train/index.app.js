@@ -19,6 +19,8 @@
             templateUrl: 'subPage/accuracy.html'
         }).when('/loss', {
             templateUrl: 'subPage/loss.html'
+        }).when('/pr', {
+            templateUrl: 'subPage/pr.html'
         });
 
     }

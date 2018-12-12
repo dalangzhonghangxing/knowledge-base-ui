@@ -12,7 +12,7 @@
             {"name":"结果管理","type":"result-manage","href":"#/result-manage"},
             {"name":"accuracy对比","type":"accuracy","href":"#/accuracy"},
             {"name":"loss对比","type":"loss","href":"#/loss"},
-
+            {"name":"PR对比","type":"pr","href":"#/pr"}
         ];
 
         vm.minHeight = window.screen.height-307;

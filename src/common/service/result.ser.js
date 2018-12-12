@@ -14,6 +14,7 @@
         vm.getModelNames = getModelNames;
         vm.getAccuraciesByModelNames = getAccuraciesByModelNames;
         vm.getLossesByModelNames = getLossesByModelNames;
+        vm.getPRsByModelNames = getPRsByModelNames;
         vm.deleteByModelName = deleteByModelName;
 
         function getLineByModelName(modelName, callback) {
@@ -30,6 +31,10 @@
 
         function getLossesByModelNames(modelNames,callback) {
             connection.get(API + "/loss", {"modelNames": modelNames}, callback);
+        }
+
+        function getPRsByModelNames(modelNames,callback) {
+            connection.get(API + "/pr", {"modelNames": modelNames}, callback);
         }
 
         function deleteByModelName(modelName,callback) {

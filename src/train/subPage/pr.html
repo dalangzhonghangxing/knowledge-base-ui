@@ -1,0 +1,33 @@
+<style>
+    .line-chart {
+        height: 500px;
+        width: 100%;
+    }
+
+    .chart-panel {
+        margin-top: 30px;
+    }
+</style>
+<div ng-controller="PRCtrl as ctrl">
+
+    <!--下拉框选取模型-->
+    <div style="margin-top: 20px;">
+        <div class="col-md-2" style="text-align: left" ng-repeat="model in ctrl.models | orderBy:'name'">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" ng-model="model.$checked">{{model.name}}
+                </label>
+            </div>
+        </div>
+        <div style="clear: both" class="text-center">
+            <button class="btn btn-primary" ng-click="ctrl.search()">查看</button>
+        </div>
+    </div>
+
+    <!--折线图-->
+    <div ng-show="ctrl.show" style="clear: both;">
+        <div class="chart-panel">
+            <line-chart chart-data="ctrl.data"></line-chart>
+        </div>
+    </div>
+</div>
