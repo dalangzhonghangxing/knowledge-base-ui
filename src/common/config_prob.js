@@ -14,7 +14,7 @@
     // SERVICE_API_ROOT: "http://219.228.60.212:16666/api/",
     var ENDPOINTS = {
         ROOT_PATH: ROOT_PATH,
-        SERVICE_API_ROOT: "http://219.228.60.212:16666/api/",
+        SERVICE_API_ROOT: "http://172.31.254.86:16666/api/",
         STATIC_PATH: "http://localhost:8888"
     };
     Object.freeze(ENDPOINTS);

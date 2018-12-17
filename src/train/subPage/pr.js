@@ -30,7 +30,7 @@
                 resultDao.getPRsByModelNames(modelNames, function (res) {
                     vm.data = {};
                     vm.accuracy = {};
-                    vm.data["title"] = "Loss对比";
+                    vm.data["title"] = "PR对比";
                     vm.data["legendData"] = res.legendData;
                     vm.data["xAxisName"] = "recall";
                     vm.data["xAxisData"] = [];

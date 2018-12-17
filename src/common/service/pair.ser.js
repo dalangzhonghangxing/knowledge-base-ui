@@ -25,6 +25,7 @@
         vm.getCountData = getCountData;
         vm.allocateSentences = allocateSentences;
         vm.getInstanceCountData = getInstanceCountData;
+        vm.getEntityPairSentenceCountData = getEntityPairSentenceCountData;
 
 
         function generate(callback) {
@@ -100,6 +101,10 @@
 
         function getInstanceCountData(callback) {
             connection.get(API + "/instance-count", {}, callback)
+        }
+
+        function getEntityPairSentenceCountData(callback) {
+            connection.get(API + "/entity-pair-sentence-count", {}, callback)
         }
     }
 })();
