@@ -30,13 +30,13 @@
                 resultDao.getPRsByModelNames(modelNames, function (res) {
                     vm.data = {};
                     vm.accuracy = {};
-                    vm.data["title"] = "PR对比";
+                    vm.data["title"] = "Precision-Recall对比";
                     vm.data["legendData"] = res.legendData;
                     vm.data["xAxisName"] = "recall";
                     vm.data["xAxisData"] = [];
                     vm.data["yAxisName"] = "precision";
                     vm.data["series"] = res.series;
-
+                    vm.data["xAxisType"] = "value";
                     vm.show = true;
                 });
         }
