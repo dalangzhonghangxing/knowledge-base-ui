@@ -52,7 +52,9 @@
                             },
                             yAxis: {
                                 name: json.yAxisName,
-                                type: 'value'
+                                type: 'value',
+                                min: 0.6,
+                                max: 1
 
                             },
                             series: json.series
