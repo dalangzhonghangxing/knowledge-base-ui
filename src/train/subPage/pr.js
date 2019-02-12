@@ -30,11 +30,19 @@
                 resultDao.getPRsByModelNames(modelNames, function (res) {
                     vm.data = {};
                     vm.accuracy = {};
-                    vm.data["title"] = "Precision-Recall对比";
-                    vm.data["legendData"] = res.legendData;
-                    vm.data["xAxisName"] = "recall";
+                    vm.data["title"] = "";
+
+                    vm.data["legendData"] = [];
+                    for(var i in res.legendData){
+                        vm.data["legendData"].push({
+                            "name":res.legendData[i],
+                            "icon":"line"
+                        });
+                    }
+
+                    vm.data["xAxisName"] = "召回率";
                     vm.data["xAxisData"] = [];
-                    vm.data["yAxisName"] = "precision";
+                    vm.data["yAxisName"] = "准确率";
                     vm.data["series"] = res.series;
                     vm.data["xAxisType"] = "value";
                     vm.show = true;
