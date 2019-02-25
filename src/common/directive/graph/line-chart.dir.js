@@ -45,7 +45,10 @@
                             },
                             xAxis: {
                                 name: json.xAxisName,
-                                nameLocation: "middle",
+                                nameTextStyle:{
+                                    align: 'center',
+                                    padding:[15,0,0,0]
+                                },
                                 type: xAxisType,
                                 boundaryGap: false,
                                 data: json.xAxisData

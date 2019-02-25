@@ -1,0 +1,33 @@
+<style>
+    .relation-chart {
+        height: 600px;
+        width: 100%;
+    }
+</style>
+<div ng-controller="ConceptQueryCtrl as conceptQueryCtrl">
+    <!--查询条件-->
+    <div class="form-horizontal">
+        <div class="form-group col-md-4">
+            <label class="col-sm-3 control-label">KnowledgeA</label>
+            <div class="col-sm-9">
+                <input type="text"
+                       class="form-control" placeholder="请输入KnowledgeA"
+                       ng-model="conceptQueryCtrl.knowledgeA">
+            </div>
+        </div>
+        <div class="form-group col-md-4">
+            <label class="col-sm-3 control-label">KnowledgeB</label>
+            <div class="col-sm-9">
+                <input type="text"
+                       class="form-control" placeholder="请输入KnowledgeB"
+                       ng-model="conceptQueryCtrl.knowledgeB">
+            </div>
+        </div>
+        <div class="form-group col-md-4">
+            <button class="btn btn-primary" ng-click="conceptQueryCtrl.query()">查询</button>
+        </div>
+    </div>
+
+    <relation-chart chart-data="conceptQueryCtrl.graphData"></relation-chart>
+
+</div>

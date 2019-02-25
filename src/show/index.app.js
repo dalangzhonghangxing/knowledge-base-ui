@@ -6,12 +6,10 @@
     ShowHome.config(config);
     config.$inject = ['$routeProvider'];
     function config($routeProvider) {
-        $routeProvider.when('/', {
-            redirectTo: '/sentence'
-        });
-
         $routeProvider.when('/knowledge-graph', {
             templateUrl: 'subPage/knowledge-graph.html'
+        }).when('/concept-query', {
+            templateUrl: 'subPage/concept-query.html'
         });
 
     }

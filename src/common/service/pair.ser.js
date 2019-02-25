@@ -26,6 +26,7 @@
         vm.allocateSentences = allocateSentences;
         vm.getInstanceCountData = getInstanceCountData;
         vm.getEntityPairSentenceCountData = getEntityPairSentenceCountData;
+        vm.conceptQuery = conceptQuery;
 
 
         function generate(callback) {
@@ -87,12 +88,12 @@
             connection.get(API + "/" + id, {}, callback)
         }
 
-        function getGraph(id,callback) {
+        function getGraph(id, callback) {
             connection.get(API + "/graph/" + id, {}, callback)
         }
 
-        function getAllGraph(relationIds,callback) {
-            connection.get(API + "/graph", {"relationIds":relationIds}, callback)
+        function getAllGraph(relationIds, callback) {
+            connection.get(API + "/graph", {"relationIds": relationIds}, callback)
         }
 
         function getCountData(callback) {
@@ -105,6 +106,13 @@
 
         function getEntityPairSentenceCountData(callback) {
             connection.get(API + "/entity-pair-sentence-count", {}, callback)
+        }
+
+        function conceptQuery(knowledgeA,knowledgeB, callback) {
+            var param = {};
+            param["knowledgeA"] = knowledgeA;
+            param["knowledgeB"] = knowledgeB;
+            connection.get(API + "/concept-query", param, callback)
         }
     }
 })();

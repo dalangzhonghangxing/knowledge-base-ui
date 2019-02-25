@@ -6,8 +6,8 @@
  */
 (function () {
     'use strict';
-    var KBHome = angular.module('KBHome');
-    KBHome.directive("searchCondition", ['PathUtils', SearchCondition]);
+    var Utils = angular.module('Utils');
+    Utils.directive("searchCondition", ['PathUtils', SearchCondition]);
 
     function SearchCondition(PathUtils) {
         return {
