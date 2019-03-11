@@ -30,6 +30,7 @@
                                 trigger: 'axis'
                             },
                             legend: {
+                                top:25,
                                 data: json.legendData
                             },
                             grid: {
@@ -45,9 +46,13 @@
                             },
                             xAxis: {
                                 name: json.xAxisName,
+                                nameLocation: 'middle',
+                                nameGap:20,
                                 nameTextStyle:{
-                                    align: 'center',
-                                    padding:[15,0,0,0]
+                                    fontSize:14
+                                },
+                                axisLabel:{
+                                    fontSize:14
                                 },
                                 type: xAxisType,
                                 boundaryGap: false,
@@ -55,6 +60,14 @@
                             },
                             yAxis: {
                                 name: json.yAxisName,
+                                nameLocation: 'middle',
+                                nameGap:30,
+                                nameTextStyle:{
+                                    fontSize:14
+                                },
+                                axisLabel:{
+                                    fontSize:14
+                                },
                                 type: 'value',
                                 min: 0.6,
                                 max: 1
